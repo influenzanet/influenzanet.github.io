@@ -1,0 +1,10 @@
+{% for item in site.data.toc.toc %}
+  {% if page.title == item.page %}
+    <h4>{{item.title}}</h4>
+    <ul class="list-unstyled">
+      {% for entry in item.headers %}
+        <li ><a href="#{{entry.header.ref}}">{{entry.header.name}}</a></li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endfor %}

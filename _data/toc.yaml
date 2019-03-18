@@ -1,0 +1,37 @@
+toc:
+  - page: Influenzanet 2.0 - Docs
+    title: Documentation
+    headers:
+      - header:
+          name: System Overview
+          ref: system-overview
+      - header:
+          name: Clients
+          ref: clients
+      - header:
+          name: Public API
+          ref: public-api
+      - header:
+          name: Cloud Services - Backend
+          ref: cloud-services---backend
+      - header:
+          name: Databases
+          ref: databases
+  - page: Influenzanet 2.0
+    title: Influenzanet 2.0
+    headers:
+      - header:
+          name: History & Propagation
+          ref: history
+      - header:
+          name: Methods
+          ref: methods
+      - header:
+          name: Why we need a new version
+          ref: why-we-need-a-new-version
+      - header:
+          name: Parties
+          ref: parties
+      - header:
+          name: Roadmap for 2019
+          ref: roadmap-for-2019

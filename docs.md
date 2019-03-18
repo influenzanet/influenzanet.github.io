@@ -1,5 +1,5 @@
 ---
-layout: home
+layout: sidenav
 title: Influenzanet 2.0 - Docs
 ---
 # Documentation

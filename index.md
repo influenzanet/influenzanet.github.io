@@ -12,7 +12,7 @@ InfluenzaNet is an online participatory monitoring system with the purpose of pr
 
 However, InfluenzaNet relies on the active participation of volunteers. In order to get volunteers to participate, it is necessary to provide an  easy-to-use and efficient system, as well as addressing potential privacy concerns of the users. Furthermore, it is necessary to satisfy the diverse needs of the 11 current and additional aspiring member countries.
 
-## History & Propagation
+## <a name="history"></a>History & Propagation
 
 InfluenzaNet was introduced in 2003 and is now represented in eleven countries. It was first launched in the Netherland and Belgium (De Grote Griepmeting, 2003), to be followed by Portugal (Gripenet, 2005), Italy (Influweb, 2008), United Kingdom (Flusurvey, 2009.), Sweden (Hälsorapport, 2011), France (Grippenet, 2012), Spain (Gripenet.es, 2012), Ireland (Flusurvey.ie, 2013), Denmark (Influmeter, 2013) and Switzerland (Grippenet, 2016). The InfluenzaNet consortium was established in 2009, to introduce a uniform system for monitoring influenza-like-illnesses and stimulate collaboration among the different countries. Among the supporters of InfluenzaNet are private individuals, numerous national agencies and foundations, as well as the European Commission. Furthermore, InfluenzaNet inspired and supported similar systems outside of europe.
 
