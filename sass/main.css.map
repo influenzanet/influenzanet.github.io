@@ -1,0 +1,13 @@
+{
+	"version": 3,
+	"file": "main.css",
+	"sourceRoot": "/Users/hevesi/Documents/Projects/Coneno/Influenzanet/info-page",
+	"sources": [
+		"stdin"
+	],
+	"sourcesContent": [
+		".main-content {\n    min-height: 80vh;\n    margin-top: 70px;\n    padding-top: 30px;\n}\n\narticle {\n  margin-top: 50px;\n}\n\n*:focus {\n  outline: none;\n}\n\n.navbar-toggler {\n  padding: 10px;\n  border: 0px;\n}\n"
+	],
+	"names": [],
+	"mappings": "AAAA,AAAA,aAAa,AAAC,CACV,UAAU,CAAE,IAAI,CAChB,UAAU,CAAE,IAAI,CAChB,WAAW,CAAE,IAAI,CACpB,AAED,AAAA,OAAO,AAAC,CACN,UAAU,CAAE,IAAI,CACjB,AAED,AAAA,CAAC,AAAA,MAAM,AAAC,CACN,OAAO,CAAE,IAAI,CACd,AAED,AAAA,eAAe,AAAC,CACd,OAAO,CAAE,IAAI,CACb,MAAM,CAAE,GAAG,CACZ"
+}

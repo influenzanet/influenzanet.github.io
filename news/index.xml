@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blog on InfluenzanNet 2.0</title>
+    <link>http://influenzanet.github.io/news/</link>
+    <description>Recent content in Blog on InfluenzanNet 2.0</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 26 Mar 2019 12:38:51 +0100</lastBuildDate>
+    
+	<atom:link href="http://influenzanet.github.io/news/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Token-based Authentication</title>
+      <link>http://influenzanet.github.io/news/2019-05-17-temporary-tokens/</link>
+      <pubDate>Fri, 17 May 2019 12:29:54 +0100</pubDate>
+      
+      <guid>http://influenzanet.github.io/news/2019-05-17-temporary-tokens/</guid>
+      <description>This is the first one in a series of posts about selected topics regarding the InfluenzaNet 2.0 development. We face many small or big choices during the development phase, and through this series we try to give you a quick glance on the backgrounds and thought processes.
+InfluenzaNet is becoming a cloud-based distributed system with microservices running on the server-cluster and multiple clients. In such a system, different authentication strategies are necessary to cover a variety of requirements regarding both, usability and security.</description>
+    </item>
+    
+    <item>
+      <title>Logo Party</title>
+      <link>http://influenzanet.github.io/news/2019-03-08-logoparty/</link>
+      <pubDate>Fri, 08 Mar 2019 12:29:40 +0100</pubDate>
+      
+      <guid>http://influenzanet.github.io/news/2019-03-08-logoparty/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;http://influenzanet.github.io/images/logoparty.jpg&#34; alt=&#34;Different logo drafts in various colors.&#34; width=&#34;100%&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;A modern system should be represented by a modern logo. We envision a friendly, recognisable logo including an icon which&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Bad News First</title>
+      <link>http://influenzanet.github.io/news/2019-03-05-launch/</link>
+      <pubDate>Sun, 03 Mar 2019 12:29:54 +0100</pubDate>
+      
+      <guid>http://influenzanet.github.io/news/2019-03-05-launch/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Bad News:&lt;/strong&gt;
+Our long-established website &lt;a href=&#34;https://influenzanet.eu&#34;&gt;https://influenzanet.eu&lt;/a&gt; is currently down. Every administrative access including all the content seemed to have vanished into some mystical abyss. Hence there is only a very basic, preliminary site for now: &lt;a href=&#34;http://influenzanet.info&#34;&gt;http://influenzanet.info&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

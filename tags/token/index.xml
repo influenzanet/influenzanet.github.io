@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>token on InfluenzanNet 2.0</title>
+    <link>http://influenzanet.github.io/tags/token/</link>
+    <description>Recent content in token on InfluenzanNet 2.0</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 17 May 2019 12:29:54 +0100</lastBuildDate>
+    
+	<atom:link href="http://influenzanet.github.io/tags/token/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Token-based Authentication</title>
+      <link>http://influenzanet.github.io/news/2019-05-17-temporary-tokens/</link>
+      <pubDate>Fri, 17 May 2019 12:29:54 +0100</pubDate>
+      
+      <guid>http://influenzanet.github.io/news/2019-05-17-temporary-tokens/</guid>
+      <description>This is the first one in a series of posts about selected topics regarding the InfluenzaNet 2.0 development. We face many small or big choices during the development phase, and through this series we try to give you a quick glance on the backgrounds and thought processes.
+InfluenzaNet is becoming a cloud-based distributed system with microservices running on the server-cluster and multiple clients. In such a system, different authentication strategies are necessary to cover a variety of requirements regarding both, usability and security.</description>
+    </item>
+    
+  </channel>
+</rss>
