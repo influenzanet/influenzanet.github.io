@@ -6,10 +6,37 @@
     <description>Recent content in Tags on InfluenzanNet 2.0</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 17 May 2019 12:29:54 +0100</lastBuildDate>
+    <lastBuildDate>Tue, 21 May 2019 18:29:54 +0100</lastBuildDate>
     
 	<atom:link href="https://influenzanet.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>software development</title>
+      <link>https://influenzanet.github.io/tags/software-development/</link>
+      <pubDate>Tue, 21 May 2019 18:29:54 +0100</pubDate>
+      
+      <guid>https://influenzanet.github.io/tags/software-development/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>technical documentation</title>
+      <link>https://influenzanet.github.io/tags/technical-documentation/</link>
+      <pubDate>Tue, 21 May 2019 18:29:54 +0100</pubDate>
+      
+      <guid>https://influenzanet.github.io/tags/technical-documentation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>testing</title>
+      <link>https://influenzanet.github.io/tags/testing/</link>
+      <pubDate>Tue, 21 May 2019 18:29:54 +0100</pubDate>
+      
+      <guid>https://influenzanet.github.io/tags/testing/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>authentication</title>
@@ -17,15 +44,6 @@
       <pubDate>Fri, 17 May 2019 12:29:54 +0100</pubDate>
       
       <guid>https://influenzanet.github.io/tags/authentication/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>technical documentation</title>
-      <link>https://influenzanet.github.io/tags/technical-documentation/</link>
-      <pubDate>Fri, 17 May 2019 12:29:54 +0100</pubDate>
-      
-      <guid>https://influenzanet.github.io/tags/technical-documentation/</guid>
       <description></description>
     </item>
     
