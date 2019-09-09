@@ -8,44 +8,38 @@
   </url>
   
   <url>
-    <loc>https://influenzanet.github.io/tags/</loc>
+    <loc>https://influenzanet.github.io/tags/software-development/</loc>
     <lastmod>2019-05-21T18:29:54+01:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://influenzanet.github.io/tags/software-development/</loc>
+    <loc>https://influenzanet.github.io/tags/</loc>
     <lastmod>2019-05-21T18:29:54+01:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://influenzanet.github.io/tags/technical-documentation/</loc>
     <lastmod>2019-05-21T18:29:54+01:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://influenzanet.github.io/tags/testing/</loc>
     <lastmod>2019-05-21T18:29:54+01:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://influenzanet.github.io/news/2019-05-17-temporary-tokens/</loc>
-    <lastmod>2019-05-17T12:29:54+01:00</lastmod>
   </url>
   
   <url>
     <loc>https://influenzanet.github.io/tags/authentication/</loc>
     <lastmod>2019-05-17T12:29:54+01:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://influenzanet.github.io/tags/token/</loc>
     <lastmod>2019-05-17T12:29:54+01:00</lastmod>
-    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://influenzanet.github.io/news/2019-05-17-temporary-tokens/</loc>
+    <lastmod>2019-05-17T12:29:54+01:00</lastmod>
   </url>
   
   <url>
@@ -80,7 +74,6 @@
   
   <url>
     <loc>https://influenzanet.github.io/categories/</loc>
-    <priority>0</priority>
   </url>
   
 </urlset>
