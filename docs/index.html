@@ -104,51 +104,34 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-11 col-md-8">
-      
-
-<h1 id="documentation">Documentation</h1>
-
-<p>This documentation page, aims to give an overview over the technical concepts of the new Influenzanet system and is continously been updated. More details about the system&rsquo;s requirements and architecture can be found here:
+      <h1 id="documentation">Documentation</h1>
+<p>This documentation page, aims to give an overview over the technical concepts of the new Influenzanet system and is continously been updated. More details about the system&rsquo;s requirements and architecture can be found here:</p>
 <ul>
-    <li><a href="/InfluenzaNet2.0-Requirements-v1.5.pdf" target="_blank">InfluenzaNet 2.0: Requirements Collection</a></li>
-    <li><a href="/InfluenzaNet2.0-Architecture-v1.3.pdf" target="_blank">InfluenzaNet 2.0: Architecture Draft</a></li>
-</ul></p>
-
+	<li><a href="/InfluenzaNet2.0-Requirements-v1.5.pdf" target="_blank">InfluenzaNet 2.0: Requirements Collection</a></li>
+	<li><a href="/InfluenzaNet2.0-Architecture-v1.3.pdf" target="_blank">InfluenzaNet 2.0: Architecture Draft</a></li>
+</ul>
 <h2 id="system-overview">System Overview</h2>
-
 <p>To create a sustainable and flexible system and being able to handle all future challenges, we defined the main components to be mostly technologically independent from each other.
 These main components are: the clients, the public API, the cloud services and the databases for the different instances. Of course, all data storage and transport is fully state-of-the-art encrypted.</p>
-
-<p><img src="/images/high-level-overview.jpg" alt="overview" width="100%"></p>
-
+<img src="/images/high-level-overview.jpg" alt="overview" width="100%">
 <h3 id="clients">Clients</h3>
-
 <p>Influenzanet will come with a default client application, but also allows member institutions to have their own applications for specific user groups.
 Client applications can be developed as a web application, native mobile apps or any thinkable future platform which supports standard HTTP communication.</p>
-
 <h3 id="public-api">Public API</h3>
-
 <p>This flexibility is achieved by a well defined interface to the cloud services based on standard communication protocols. Currently, we support a <em>REST-like</em> HTTP interface but it is already planned to add gRPC support for more advanced features. More details will be available soon.</p>
-
-<h3 id="cloud-services-backend">Cloud Services - Backend</h3>
-
+<h3 id="cloud-services---backend">Cloud Services - Backend</h3>
 <p>On the backend side, we designed a micro service architecture based system for better scalability and a more flexible development process.
 We are leveraging state of the art design concepts, programming languages and communication standards to create a performant and well maintainable service.
 The backend will be offered as Software as a Service (Saas) but can also be downloaded as a self-hosted version. More  information about this will be detailed here soon.</p>
-
 <h3 id="databases">Databases</h3>
-
 <p><strong>Instances</strong>
 A single backend installation - which is not storing any data - supports the connection of multiple database instances, for example to store data of different regions separately.
 This is useful to fulfil the requirements of different legislations and privacy policies the different InfluenzaNet members are bound to, and at the same time reducing overall operational costs.
 Each instance consists of their own seperate user, survey and content data base.</p>
-
 <p><strong>User DB</strong>
 Only personalized user related data (e.g. email address, system preferences, etc.) are stored in this database.</p>
-
 <p><strong>Survey DB</strong>
 This data base holds only research study related information provided by the participants (e.g. survey answers, sensor data, etc.) or third party sources (e.g. weather data). All data points here are anonymized and once a user is deleted from the <em>User DB</em>, the entries cannot linked to a person any more.</p>
-
 <p><strong>Content DB</strong>
 High level analytics and other content that was generated specifically for an <em>Instance</em> can be stored and accessed in the content DB.</p>
 

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Blog on InfluenzaNet 2.0</title>
@@ -37,8 +37,7 @@ InfluenzaNet is becoming a cloud-based distributed system with microservices run
       <pubDate>Fri, 08 Mar 2019 12:29:40 +0100</pubDate>
       
       <guid>https://influenzanet.github.io/news/2019-03-08-logoparty/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;https://influenzanet.github.io/images/logoparty.jpg&#34; alt=&#34;Different logo drafts in various colors.&#34; width=&#34;100%&#34;&gt;&lt;/p&gt;
-
+      <description>&lt;img src=&#34;https://influenzanet.github.io/images/logoparty.jpg&#34; alt=&#34;Different logo drafts in various colors.&#34; width=&#34;100%&#34;&gt;
 &lt;p&gt;A modern system should be represented by a modern logo. We envision a friendly, recognisable logo including an icon which&lt;/p&gt;</description>
     </item>
     

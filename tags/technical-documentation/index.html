@@ -111,58 +111,39 @@
         <h2>Automated Testing</h2>
         <p class="text-secondary">May 21, 2019</p>
         <p><p><strong>Testing software</strong></p>
-
 <p>When it comes to delivering a product to customers, every company would make sure that the outcome meets certain quality criteria <em>before</em> handing it over. This is because as human beings  we are prone to make mistakes, and no matter how hard we try to keep every aspect and little detail in mind, we might still end up missing a key point or make a small mistake that is going to cost us a lot in later phases.
 Same logic is relevant with software applications: we continuously run investigations to make sure the designed system satisfies user requirements and responds to all sorts of input correctly.</p>
-
 <p>We prefer to run tests as early as possible, because both studies and experience have shown that a few tiny mistakes in early stages, if not dealt with in time, can cost us quite a lot: on the one hand, the later an error is found, the more areas it has affected. On the other hand, finding the cause of a failure is never an easy task, as it requires travelling back in time.</p>
-
 <p><strong>Motivation for automated testing</strong></p>
-
 <p>There are different approaches and variant techniques for testing software applications. Some are rather basic; for example when a developer adds a module to the system with the goal of fulfilling a certain requirement, he or she will definitely run the application once again to see if the module works as it should. A more advanced approach would require a team member to obtain the role of the “tester”, meaning he or she starts interacting with the system the way a normal user would. The tester tries to achieve specific goals, and keeps track of scenarios that were unsuccessful or lacked certain quality aspects. This approach is widely used, especially when it comes to evaluating the user experience, but it has its flaws: for one thing, we are relying on recollection and perception of our tester, who might forget to check a particular path or have some wrong assumptions about the requirements. And even with the most thorough, dedicated testers, the cost of manual quality assurance increases steadily as the codebase grows and more features are added to the system.</p>
-
 <p><strong>Explanation of automated testing</strong></p>
-
 <p>Here is where automation comes to the rescue: we make use of a seperate software to test our software. By describing the behaviour we expect from our system in a formal way, we get a chance to automatically check whether the actual outcome is the same as the expected outcome. We can define many test cases, each evaluating a single unit of our system or judging whether a sub-goal has been reached, and by running these individual tests, we evaluate our system as a whole.
 This approach offers the possibility of reuse: every time a new feature is implemented, or a new module is added to the system, all the previous tests are re-run. This tactic takes care of possible regression of the system, and makes sure no new piece of code is breaking anything that used to be working correctly.</p>
-
 <p>In some cases it is beneficial to write tests first, and then write code- correct and comprehensive code that complies with the defined test cases. In contradiction to the classic approach of “first coding and then testing” (which sometimes results in untested code specially near release dates!), the Test-Driven-Development makes sure no requirement is forgotten: it might not be implemented yet, but it will be eventually.</p>
-
 <p><strong>How we make use of this approach in InfluenzaNet</strong></p>
-
 <p>What was described so far applies for both backend and frontend of a software system, but the main goal of this article is to explain the techniques we are using to assess the frontend in InfluenzaNet project: do the web-pages look the way they should? How do users feel when interacting with the website? And of course, how we can find the answers to those questions in a fast and reliable way.
 We started with creating the sign-up module, having the long-term goal of attracting more people to be part of InfluenzaNet. First, we discussed the behaviour we would expect from this module: what it <em>should</em> do, and the things that <em>could</em> go wrong. You can see a list of behaviors below:</p>
-
-<p><img src="/images/blog/2019-05-21/automated_test_figure.png" alt="Figure about automated testing." width="100%"></p>
-
+<img src="/images/blog/2019-05-21/automated_test_figure.png" alt="Figure about automated testing." width="100%">
 <p>Next step was to actually write tests. In the examples below, you can see how we checked whether a certain word is included in our page (in this case, “Email” in the first example), and how we would check whether the system would reject an invalid email address (second example), and accept a valid one (third example).</p>
-
 <p><strong>Example 1:</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">it</span>(<span style="color:#e6db74">`should have as text &#39;Email&#39;`</span>, <span style="color:#66d9ef">async</span>(() =&gt; {
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">it</span>(<span style="color:#e6db74">`should have as text &#39;Email&#39;`</span>, <span style="color:#a6e22e">async</span>(() =&gt; {
     <span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">comp</span>.<span style="color:#a6e22e">text</span>).<span style="color:#a6e22e">toEqual</span>(<span style="color:#e6db74">&#39;Email&#39;</span>);
 }));
-</code></pre></div>
-<p><strong>Example 2:</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">it</span>(<span style="color:#e6db74">`should not accept invalid email`</span>, <span style="color:#66d9ef">async</span>(() =&gt; {
+</code></pre></div><p><strong>Example 2:</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">it</span>(<span style="color:#e6db74">`should not accept invalid email`</span>, <span style="color:#a6e22e">async</span>(() =&gt; {
     <span style="color:#a6e22e">comp</span>.<span style="color:#a6e22e">signUpForm</span>.<span style="color:#a6e22e">controls</span>[<span style="color:#e6db74">&#39;email&#39;</span>].<span style="color:#a6e22e">setValue</span>(<span style="color:#e6db74">&#39;www.john-doe.come&#39;</span>);
     <span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">comp</span>.<span style="color:#a6e22e">signUpForm</span>.<span style="color:#a6e22e">valid</span>).<span style="color:#a6e22e">toBeFalsy</span>();
 }));
-</code></pre></div>
-<p><strong>Example 3:</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">it</span>(<span style="color:#e6db74">`should accept valid email`</span>, <span style="color:#66d9ef">async</span>(() =&gt; {
+</code></pre></div><p><strong>Example 3:</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">it</span>(<span style="color:#e6db74">`should accept valid email`</span>, <span style="color:#a6e22e">async</span>(() =&gt; {
     <span style="color:#a6e22e">comp</span>.<span style="color:#a6e22e">signUpForm</span>.<span style="color:#a6e22e">controls</span>[<span style="color:#e6db74">&#39;email&#39;</span>].<span style="color:#a6e22e">setValue</span>(<span style="color:#e6db74">&#39;john@doe.com&#39;</span>);
     <span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">comp</span>.<span style="color:#a6e22e">signUpForm</span>.<span style="color:#a6e22e">valid</span>).<span style="color:#a6e22e">toBeTruthy</span>();
 }));
-</code></pre></div>
-<p><strong>Our story: challenges</strong>
+</code></pre></div><p><strong>Our story: challenges</strong>
 As the system and its provided features grow, so does the number of tests: every new module brings along its related tests, and over time we come up with new ideas on further assessment of old modules. This is the beauty of automated testing; we get more confident about our system as more and more tests are passing, and the cost of running those tests does not increase significantly.</p>
-
 <p>So, what could go wrong?</p>
-
 <p>Seeing certain tests failing is a natural part of the process. But when a test keeps failing despite all the effort the developer puts into fixing it, it can be annoying. One solution for the described situation is to try to understand the test better, and picture what goal the author had originally in mind when writing this test. If that didn’t help, the now frustrated developer should sit down with the author of the test, and together they could find a solution.</p>
-
 <p>Unfortunately, this is not always possible, as the original author might not be present at that time. In such cases, one bad approach would be to simply remove the tests that are not passing (“after all, we don’t know what was meant to happen here!”). However, there are practices to follow to avoid such situations. One of the strategies, we have learned to employ is to emphasize the importance of documenting the tests we write: even if the author of a test is present, the test should be self-explanatory. We are looking for other tactics as well, and we are positive that as the challenges we face grow, so does our level of expertise.</p>
-
 <p><em>Ala Harirchi</em></p>
 </p>
       </article>
@@ -171,35 +152,23 @@ As the system and its provided features grow, so does the number of tests: every
         <h2>Token-based Authentication</h2>
         <p class="text-secondary">May 17, 2019</p>
         <p><p><em>This is the first one in a series of posts about selected topics regarding the InfluenzaNet 2.0 development. We face many small or big choices during the development phase, and through this series we try to give you a quick glance on the backgrounds and thought processes.</em></p>
-
 <p>InfluenzaNet is becoming a cloud-based distributed system with microservices running on the  server-cluster and multiple clients. In such a system, different authentication strategies are necessary to cover a variety of requirements regarding both, usability and security. We are working on a more detailed article on the topic of authentication which we will post here later.  The goal of this post is to provide an overview over token-based authentication in InfluenzaNet and especially on how temporary tokens can be used in the new system.</p>
-
 <p>Token-based authentication (e.g., using the JSON web-token method) is a de facto standard for web-based services, but to get a good understanding of the procedures, we start with a short explanation of the main concept for this form of authentication:</p>
-
 <p>Once a user proved his identity via providing login credentials, we want to know for each following interaction with the server  that this is the same user, without the need of sending the user credentials again every time. Tokens are basically strings that the server generates and signs for a client after the user authenticated. The client will attach this string to messages/requests sent to the server to prove its identity.
 As a short summary, tokens can be used as a kind of key to grant the user access to specific resources.</p>
-
 <p>But what are tokens exactly?
 As mentioned above, tokens are strings that are generated by the server. These strings contain information that the server uses to identify the user and are cryptographically signed by the server to check the authenticity (that it was originally generated by the server and not altered by another entity). To make tokens as secure as possible, they should come with an expiry mechanism. This can either be a condition that needs to be fulfilled, e.g., token was used, or the end of a time period that is reached. In case sensitive information is included within and transported with the token, the token also should be hashed. This is a technique to make the string unreadable, so that hackers cannot get the information from the tokens, even when they get access to them. Further information on hashing as well as on how to make tokens secure, can be found <a href="https://web.archive.org/web/20190509072528/https://crackstation.net/hashing-security.htm">here</a>.</p>
-
 <p>With InfluenzaNet, we also decided to use temporary tokens (TempToken), a slightly different concept of tokens, than described above. TempTokens or temporary tokens are created to be available and valid only for a single usage. The special feature of this type of token is that it is deleted immediately after use or after a specific time period passed, whatever comes first. Each TempToken is uniquely generated by the server and saved as a database entry with some context information (e.g., user id, purpose, expiration date, etc.). For InfluenzaNet, we implemented a unique string generator inspired by the concept of Universally Unique Lexicographically Sortable Identifiers (as implemented, e.g., <a href="https://github.com/oklog/ulid">here</a>). The first part of the generated string encodes the current timestamp in milliseconds, and the second part contains newly created random list of alphanumeric characters. With this method, even running multiple instances of the same service for generating these strings, the chance of having duplicates is very low. (The probability that two strings, generated at the exact same millisecond, are identical, is 1 to 1,208,925,819,614,629,174,706,176.) These attributes are essential for those kinds of use cases, in which it is important that the tokens can only be used once.</p>
-
 <p>When the user requests a specific action, such as a password reset the system generates a temporary token and stores the token in the database. The token is then passed to the user, e.g., via a link in an email. By clicking on the link in the email, the user will send a request with the token to the system. The system then checks if the token is in the database and is valid. If that is the case, the request of the user will be performed, e.g., the user is able to reset the password. After that the token will be deleted from the database, to make sure that the request cannot be performed twice with the same token.</p>
-
 <p>Possible use cases for TempTokens besides resetting the password are confirming an email address, filling out surveys or invitations to InfluenzaNet.</p>
-
 <p><strong>Password Reset</strong>
 In case, a user requests a password reset, a TempToken is generated and an email with a link including this token is sent to the user. If the user tries to use this token, it is first checked whether the token is present in the database and valid. If this is the case, the user can reset the password and the token is deleted and so any further use prevented.</p>
-
 <p><strong>Changing Email Address</strong>
 When a user enters a new email address to the system, we can use temporary tokens for 1) confirming the user owns the given email address, and 2) resetting to the old email address in case, the replacement was not intended by the user. In these use cases, an email with a temporary token is sent to the respective email address.  Since the sent tokens are unique and bound to a specific user, time frame and purpose, the user can confirm her identity by simply possessing the correct token string. Practically this could mean calling the URL token address by clicking on it from the email.</p>
-
 <p><strong>Temporary/Loginless Access To fill out Surveys</strong>
 In InfluenzaNet, participants receive surveys regularly. To increase response rates, we want to make the process of filling out surveys as easy as possible. In case of an email notification, the user can simply click the link from the email, which will forward the user directly to the survey and open a temporary session, which is authenticated for the duration until the survey is submitted or saved. For this, we also use these temporary tokens, where the database entry contains specific information about to which user and which survey it is assigned to.</p>
-
 <p><strong>Invitation</strong>
 An idea to increase the number of participants is to allow users to invite their friends and relatives to InfluenzaNet. By doing so, they could earn rewards when someone registers using the invitation link. This link that includes a temporary token token is sent to the invited person. When the link is clicked, this token or more specifically, the information stored with it in the database, can be used to identify which user sent the invitation and add the reward. In this case, it is important that the token is deleted as soon as it was used, otherwise the user would have the possibility to use the token again and receive several rewards for a single invitation.</p>
-
 <p><em>Daniel</em></p>
 </p>
       </article>

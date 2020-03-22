@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Influenzanet 2.0 on InfluenzaNet 2.0</title>
@@ -46,8 +46,8 @@ InfluenzaNet is becoming a cloud-based distributed system with microservices run
       <pubDate>Tue, 26 Mar 2019 12:07:55 +0100</pubDate>
       
       <guid>https://influenzanet.github.io/docs/</guid>
-      <description>Documentation This documentation page, aims to give an overview over the technical concepts of the new Influenzanet system and is continously been updated. More details about the system&amp;rsquo;s requirements and architecture can be found here:  InfluenzaNet 2.0: Requirements Collection InfluenzaNet 2.0: Architecture Draft 
-System Overview To create a sustainable and flexible system and being able to handle all future challenges, we defined the main components to be mostly technologically independent from each other.</description>
+      <description>Documentation This documentation page, aims to give an overview over the technical concepts of the new Influenzanet system and is continously been updated. More details about the system&amp;rsquo;s requirements and architecture can be found here:
+ InfluenzaNet 2.0: Requirements Collection InfluenzaNet 2.0: Architecture Draft  System Overview To create a sustainable and flexible system and being able to handle all future challenges, we defined the main components to be mostly technologically independent from each other.</description>
     </item>
     
     <item>
@@ -56,8 +56,7 @@ System Overview To create a sustainable and flexible system and being able to ha
       <pubDate>Fri, 08 Mar 2019 12:29:40 +0100</pubDate>
       
       <guid>https://influenzanet.github.io/news/2019-03-08-logoparty/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;https://influenzanet.github.io/images/logoparty.jpg&#34; alt=&#34;Different logo drafts in various colors.&#34; width=&#34;100%&#34;&gt;&lt;/p&gt;
-
+      <description>&lt;img src=&#34;https://influenzanet.github.io/images/logoparty.jpg&#34; alt=&#34;Different logo drafts in various colors.&#34; width=&#34;100%&#34;&gt;
 &lt;p&gt;A modern system should be represented by a modern logo. We envision a friendly, recognisable logo including an icon which&lt;/p&gt;</description>
     </item>
     
