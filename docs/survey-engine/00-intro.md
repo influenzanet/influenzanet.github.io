@@ -14,7 +14,7 @@ A Survey is composed of different kinds of elements :
 
 - [Survey structure](./structure): How Items are organized, grouped and defined
 - [Survey Item](./item) : How an Item and its content is described (to be a "Question" or not), 
-- [Surveys Components](./components) : used to build an Item contents (texts, data collection fields) 
+- [Surveys Components](./components/overview) : used to build an Item contents (texts, data collection fields) 
 - [Survey Expressions](./expressions) : describing rules to control survey logic and reactive behaviors
 - [Internationalization](./i18n) : How to define survey in different languages
 - [Runtime Context](./context) : The runtime context (external information about the participant, the previous responses)
