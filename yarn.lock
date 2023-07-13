@@ -1684,11 +1684,6 @@
     url-loader "^4.1.1"
     webpack "^5.73.0"
 
-"@fontsource/open-sans@^4.5.13":
-  version "4.5.14"
-  resolved "https://registry.yarnpkg.com/@fontsource/open-sans/-/open-sans-4.5.14.tgz#b3e1665c0b3fdfc1f030ded2843749e3cf3a5900"
-  integrity sha512-mBXIIETBlW8q/ocuUN0hyGow2iuf75hQEHQt8R/RJ/HcphVbLg8KB7pHYGbFGDqs75W+SWvTC7JkVeAjT65BuQ==
-
 "@fortawesome/fontawesome-free@^5.15.4":
   version "5.15.4"
   resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-free/-/fontawesome-free-5.15.4.tgz#ecda5712b61ac852c760d8b3c79c96adca5554e5"
@@ -2876,6 +2871,13 @@ caniuse-lite@^1.0.0, caniuse-lite@^1.0.30001464, caniuse-lite@^1.0.30001503:
   version "1.0.30001515"
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001515.tgz#418aefeed9d024cd3129bfae0ccc782d4cb8f12b"
   integrity sha512-eEFDwUOZbE24sb+Ecsx3+OvNETqjWIdabMy52oOkIgcUtAsQifjUG9q4U9dgTHJM2mfk4uEPxc0+xuFdJ629QA==
+
+case-editor-tools@^1.6.0:
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/case-editor-tools/-/case-editor-tools-1.6.0.tgz#905ec702c7419731c5a43aa3e196abf446186e63"
+  integrity sha512-B2y7ZHPBZPJteXWZiw+TF9nxCMNi0Oxw0jWR8/BEG9oj6GXK4uXqDAzGWaM4enRRkIRNl/t2DvD9+PP1Ta0LYg==
+  dependencies:
+    survey-engine "^1.2.0"
 
 case-web-ui@1.14.7:
   version "1.14.7"
@@ -6497,6 +6499,14 @@ raw-body@2.5.1:
     iconv-lite "0.4.24"
     unpipe "1.0.0"
 
+raw-loader@^4.0.2:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/raw-loader/-/raw-loader-4.0.2.tgz#1aac6b7d1ad1501e66efdac1522c73e59a584eb6"
+  integrity sha512-ZnScIV3ag9A4wPX/ZayxL/jZH+euYb6FcUinPcgiQW0+UBtEv0O6Q3lGd3cqJ+GHH+rksEv3Pj99oxJ3u3VIKA==
+  dependencies:
+    loader-utils "^2.0.0"
+    schema-utils "^3.0.0"
+
 rc@1.2.8, rc@^1.2.8:
   version "1.2.8"
   resolved "https://registry.yarnpkg.com/rc/-/rc-1.2.8.tgz#cd924bf5200a075b83c188cd6b9e211b7fc0d3ed"
@@ -7445,7 +7455,7 @@ supports-preserve-symlinks-flag@^1.0.0:
   resolved "https://registry.yarnpkg.com/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz#6eda4bd344a3c94aea376d4cc31bc77311039e09"
   integrity sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==
 
-survey-engine@^1.2.1:
+survey-engine@^1.2.0, survey-engine@^1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/survey-engine/-/survey-engine-1.2.1.tgz#214099ca904782c454e14962b43624f3899b16f9"
   integrity sha512-q+9m16D+Zfu5F7u0BMol5HcrfXwQaVbrfQgEyo7HMt5BLsSL6aOwvznvQaHT0wdfCruAY3Dc3LHr/ZQ6qjVdyQ==
