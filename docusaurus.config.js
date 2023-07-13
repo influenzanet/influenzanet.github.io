@@ -14,7 +14,7 @@ const config = {
   url: 'https://influenzanet.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/',
+  baseUrl: '/survey-handbook/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
@@ -27,6 +27,8 @@ const config = {
   markdown: {
       mermaid: true,
   },
+
+  plugins: ['docusaurus-plugin-sass'],
 
   themes: ['@docusaurus/theme-mermaid'],
 
@@ -61,7 +63,7 @@ const config = {
         },
         */
         theme: {
-        //  customCss: require.resolve('./src/css/custom.css'),
+         customCss: require.resolve('./src/theme/custom.scss'),
         },
       }),
     ],
