@@ -1,21 +1,21 @@
 import React from "react";
 //import { en } from 'date-fns/locale';
 import { SurveyItems } from "case-editor-tools/surveys";
-import { _T } from "./utils";
+import { ViewerDefinition, textMap } from "./utils";
 
 export const DateInput = () => {
-  // --snippet--
+  // --code--
   return SurveyItems.dateInput({
     itemKey: 'q1',
     parentKey: 'test',
-    questionText:_T("A date question"),
+    questionText:textMap("A date question"),
     dateInputMode: 'YMD',
   });
   //--end--
 }
 
-export const DateInputViewer = {
-  item: DateInput,
-}
-
+export default {
+  name: 'dateInput',
+  item: DateInput
+} as ViewerDefinition;
 

@@ -1,24 +1,30 @@
 import { SurveySingleItemView } from "case-web-ui";
 import React from "react";
-import { ResponseItem, SurveyItem, Survey } from "survey-engine/data_types";
+import { ResponseItem, SurveyItem, Survey, LocalizedObject } from "survey-engine/data_types";
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from '@theme/CodeBlock';
-import BrowserOnly from '@docusaurus/BrowserOnly';
 import { SurveyEngineCore } from "survey-engine/engine";
-import { SurveyEditor } from "case-editor-tools/surveys/survey-editor/survey-editor";
 
-export const _T = (str: string) => {
+export type SurveyItemProvider = SurveyItem | ( () => SurveyItem);
+
+
+// Create an english text 
+export const textMap = (str: string) => {
     return new Map<string, string>([ ['en', str] ]);
 }
 
-type SurveyItemProvider = SurveyItem | ( () => SurveyItem);
-
-interface SurveyItemProps {
-    item: SurveyItemProvider
-    prefill?: ResponseItem
+// Create a Localized Object for english text
+export const text = (str: string): LocalizedObject => {
+    return {
+        'code': 'en',
+        'parts': [
+            str
+        ]
+    }
 }
+
 
 const invalidWarning = "Please check your response";
 
@@ -39,7 +45,7 @@ const resolveItem = (surveyItem : SurveyItemProvider) => {
     const engine = new SurveyEngineCore( survey, {},[], true);
     // Render the survey by resolving all expressions
     const resolvedItem =  engine.getRenderedSurvey().items.at(0)
-    console.log(resolvedItem);
+    //console.log(resolvedItem);
     return resolvedItem;
 }
 
@@ -48,7 +54,7 @@ const resolveItem = (surveyItem : SurveyItemProvider) => {
  * @param props S
  * @returns 
  */
-export const DefaultItemViewer = (props:  SurveyItemProps) => {
+export const DefaultItemViewer = (props:  ItemViewProps) => {
     return <SurveySingleItemView
         renderItem={resolveItem(props.item)}
         responsePrefill={props.prefill}
@@ -59,48 +65,43 @@ export const DefaultItemViewer = (props:  SurveyItemProps) => {
         showKeys={false}
         />
 }
-    
-const snippetExp = /.*\/\/\s*--snippet--\s(\s*return\s*)?(.*)\/\/\s*--end--.*/gms
+export interface ItemViewProps {
+    customViewer?: React.ReactNode // Will use the DefaultItemViewer with this configuration if not provided
+    item: SurveyItemProvider
+    prefill?: ResponseItem
+    json?: object // Optional json object use for json representation, default will use item object
+    codeSnippet: string // Snippet of code to show
+}
+
+export interface ViewerDefinition extends Omit<ItemViewProps, "codeSnippet"> {
+    name: string;
+    code?: string;
+}
 
 /**
- * Snippet extract from code portions between  
- * // --snippet-- 
- * ...
- * // --end--
- * @param code 
+ * ItemView provide Survey component UI with code snippet and json
+ * The Component is rendered using a
+ * @param props 
  * @returns 
  */
-const snippet = function(code: string) {
-    return code.replace(snippetExp, "$2");
-}
-
-interface ItemViewProps {
-    viewer?: React.ReactNode
-    defaultViewer?: SurveyItemProps
-    json?: object
-    code: string
-}
-
 export const ItemView : React.FC<ItemViewProps> = (props) => {
-     var json : object = undefined;
+    
+    const item = resolveItem(props.item);
 
-    if(props.defaultViewer) {
-        props.defaultViewer.item = json = resolveItem(props.defaultViewer.item);
-    }
+    const viewerConf = { ...props, item : item}
 
-    const surveyViewer = props.viewer ?? <DefaultItemViewer {...props.defaultViewer }/>
+    const surveyViewer = props.customViewer ?? <DefaultItemViewer {...viewerConf }/>
 
-    if(!json) {
-        json = props.json;
-    }
+    const json = props.json ?? item;
 
     return  <Tabs>
             <TabItem value="item" label="Component">
             {surveyViewer}
             </TabItem>
             <TabItem value="code" label="Code (case-editor-tools)">
-                <CodeBlock language="jsx">{ snippet(props.code) }</CodeBlock>
+                <CodeBlock language="jsx">{ props.codeSnippet }</CodeBlock>
+                <span style={{"fontSize":".8em", "fontStyle":"italic"}}>To simplify code, helpers <code>textMap()</code> and <code>text()</code> generate respectively a Map and a Localized Text for the english text provided. See Internationalization for more details of translation.</span>
             </TabItem>
-            {json ? <TabItem value="json" label="JSON"><CodeBlock language="json">{ JSON.stringify(json, undefined, 3) }</CodeBlock></TabItem> : undefined}
+            {json ? <TabItem value="json" label="JSON"><CodeBlock language="json">{ JSON.stringify(json, undefined, 2) }</CodeBlock></TabItem> : undefined}
         </Tabs>
 }
