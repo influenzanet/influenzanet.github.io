@@ -1,11 +1,13 @@
 import { SurveySingleItemView } from "case-web-ui";
 import React from "react";
-import { ResponseItem, SurveyItem } from "survey-engine/data_types";
+import { ResponseItem, SurveyItem, Survey } from "survey-engine/data_types";
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from '@theme/CodeBlock';
 import BrowserOnly from '@docusaurus/BrowserOnly';
+import { SurveyEngineCore } from "survey-engine/engine";
+import { SurveyEditor } from "case-editor-tools/surveys/survey-editor/survey-editor";
 
 export const _T = (str: string) => {
     return new Map<string, string>([ ['en', str] ]);
@@ -20,10 +22,26 @@ interface SurveyItemProps {
 
 const invalidWarning = "Please check your response";
 
-const resolveItem = (item : SurveyItemProvider) => {
-    return typeof(item) == "function" ? item() : item;
+const resolveItem = (surveyItem : SurveyItemProvider) => {
+    const item =  typeof(surveyItem) == "function" ? surveyItem() : surveyItem;
+    
+    // Now resolve texts using survey engine and Survey
+    // Mock full a survey
+    const survey: Survey = {
+        versionId: '1',
+        surveyDefinition: {
+            key: 'test',
+            items: [
+                item
+            ]
+        }
+    }
+    const engine = new SurveyEngineCore( survey, {},[], true);
+    // Render the survey by resolving all expressions
+    const resolvedItem =  engine.getRenderedSurvey().items.at(0)
+    console.log(resolvedItem);
+    return resolvedItem;
 }
-
 
 /**
  * Simple Item viewer, basic helper to show an item with only optional prefills
