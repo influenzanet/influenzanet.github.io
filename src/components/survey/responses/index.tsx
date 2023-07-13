@@ -17,12 +17,11 @@ import TextCode from "!!raw-loader!./text";
 // A module can export one viewer or several
 type ModuleDefinition = ViewerDefinition | ViewerDefinition[];
 
-// Known viewers
+// Known viewers (ViewerDefinition + resolved code snippet from loaded code)
 const viewers = new Map<string, ItemViewProps>;
 
-
 /**
- * Code Snippet extract from code portions between  
+ * Code Snippet extract from code portions between 
  * // --code-- 
  * ...
  * // --end--
@@ -43,9 +42,7 @@ const snippet = function(code: string, name?:string) {
 }
 
 const registerViewer = (def: ViewerDefinition, codeText: string) => {
-
     const codeSnippet = snippet(codeText, def.code);
-
     viewers.set(def.name, {...def, codeSnippet: codeSnippet });
 }
 
