@@ -1,9 +1,9 @@
 import { SurveyItems } from "case-editor-tools/surveys";
-import { textMap, DefaultItemViewer, ViewerDefinition } from "./utils";
+import { textMap, ItemViewerDefinition } from "../../../viewer/response";
 import React from "react";
 
 export const SingleChoiceItem = () => {
-  // --code--
+  // @code(singleChoice)
   return SurveyItems.singleChoice({
     itemKey:'t1',
     parentKey:'test',
@@ -12,14 +12,14 @@ export const SingleChoiceItem = () => {
         {'key': '1', content: textMap("My Option"), role: 'option' },
     ]
   });
-  // --end--
+  // @end(singleChoice)
 }
 
 export const SingleChoiceViewer = {
     
 }
  
-const def : ViewerDefinition = {
+const def : ItemViewerDefinition = {
   name: 'singleChoice',
   item: SingleChoiceItem,
   prefill:{

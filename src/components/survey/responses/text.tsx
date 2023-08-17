@@ -1,9 +1,9 @@
 import { SurveyItems } from "case-editor-tools/surveys";
-import { textMap, DefaultItemViewer, text, ViewerDefinition } from "./utils";
+import { text, ItemViewerDefinition } from "../../../viewer/response";
 import React from "react";
 
 export const TextItem = () => {
-  // --code--
+  // @code(textComponent)
 
   /**
    * The display helper creates a SurveyItem with a list of textual components
@@ -35,16 +35,14 @@ export const TextItem = () => {
         }
    ]
   });
-  // --end--
+  // @end(textComponent)
 }
  
 export default [
     {
         name:'basicText',
-        code:'basic',
         item: ()=> {
-             // --code:basic--
-
+            // @code(basicText)
                 /**
                  * The display helper creates a SurveyItem with a list of textual components
                  * 
@@ -65,7 +63,7 @@ export default [
                         }                       
                     ]
                 });
-            // --end:basic--
+            // @end(basicText)
         }
         
     },
@@ -73,4 +71,4 @@ export default [
         name:'textComponent',
         item: TextItem
     }
-] as ViewerDefinition[]
+] as ItemViewerDefinition[]

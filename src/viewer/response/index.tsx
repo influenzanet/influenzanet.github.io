@@ -6,9 +6,9 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from '@theme/CodeBlock';
 import { SurveyEngineCore } from "survey-engine/engine";
+import { ViewerDefinition } from "../types";
 
 export type SurveyItemProvider = SurveyItem | ( () => SurveyItem);
-
 
 // Create an english text 
 export const textMap = (str: string) => {
@@ -24,7 +24,6 @@ export const text = (str: string): LocalizedObject => {
         ]
     }
 }
-
 
 const invalidWarning = "Please check your response";
 
@@ -65,17 +64,14 @@ export const DefaultItemViewer = (props:  ItemViewProps) => {
         showKeys={false}
         />
 }
-export interface ItemViewProps {
-    customViewer?: React.ReactNode // Will use the DefaultItemViewer with this configuration if not provided
+
+export interface ItemViewerDefinition extends ViewerDefinition {
     item: SurveyItemProvider
     prefill?: ResponseItem
-    json?: object // Optional json object use for json representation, default will use item object
-    codeSnippet: string // Snippet of code to show
 }
 
-export interface ViewerDefinition extends Omit<ItemViewProps, "codeSnippet"> {
-    name: string;
-    code?: string;
+export interface ItemViewProps extends ItemViewerDefinition {
+    customViewer?: React.ReactNode // Will use the DefaultItemViewer with this configuration if not provided
 }
 
 /**

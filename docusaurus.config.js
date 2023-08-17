@@ -28,7 +28,7 @@ const config = {
       mermaid: true,
   },
 
-  plugins: ['docusaurus-plugin-sass'],
+  plugins: ['docusaurus-plugin-sass', './plugins/snippets'],
 
   themes: ['@docusaurus/theme-mermaid'],
 
