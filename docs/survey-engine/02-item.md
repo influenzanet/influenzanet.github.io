@@ -17,6 +17,14 @@ The [components](./components/overview)
 
 # Validation Rules
 
+Validation rules is a set of rules applied when the survey is about to be submitted.
+
+Each validation rule is defined by :
+
+- a type : 'hard' or 'soft',  'hard' will block the survey submission, soft wont block and can be used to show warning message for example.
+- an id : 
+
+
 # Special Survey Item
 
 Special survey Item are defined using the `type` property of a SurveyItem.

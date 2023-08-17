@@ -6,9 +6,9 @@ sidebar_class_name: green
 
 ## Overview
 
-To summary, a survey can be described as hierarchical structure (like a tree) of elements called `Item` (elements can be a single element, a leaf of the tree, or a group of elements, a node). The leaf are the questions, and each question is composed of a set of components, describing the question content (for display like question label, text or input to collect the data).
+In this engine, a survey is described as hierarchical structure (a tree) of elements called `Item` (these elements can be a single element, a leaf of the tree, or a group of elements, a node of the survey tree). The leaf are the questions, and each question is composed of a set of components, describing the question content (for display like question label, text or input to collect the data).
 
-The survey definition is composed of two kinds of elements:
+The Survey Definition is composed of two kinds of elements:
 
 - `Item`, can be a single item (a "question"), named `SingleItem` or a group of items, named `GroupItem` 
 - `ItemComponent` hold by a `SingleItem`, describing the question content. It can also be organized as a tree of component by using `ItemGroupComponent` (see Components)
@@ -35,10 +35,10 @@ flowchart TB
 
 ## Survey Item
 
-There are two kinds of `Item:`
+An `Item` can be:
 
-- `SingleItem`, is the logical unit of the survey (usually known as "question"). It can show text, and/or data collection components with more or less complex layouts.
-- `GroupItem` represents a group of Item(s). 
+- a `SingleItem`, is the logical unit of the survey (usually known as "question"). It can show text, and/or data collection components with more or less complex layouts.
+- a `GroupItem` represents a group of Item(s). 
 
 Some remarks about these elements:
 

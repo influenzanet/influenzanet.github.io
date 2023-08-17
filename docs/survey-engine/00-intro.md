@@ -4,13 +4,13 @@ sidebar_class_name: green
 ---
 # Survey Engine Overview
 
-The survey engine runs a Survey on the client. By "running" a survey we means to display the survey elements (texts, images and the widgets used to collect the data) and apply the logic rules allowing the survey to react to the user inputs (like showing a question on some condition).
+The survey engine runs a Survey on the client. By "running" a survey we mean to display the survey elements (texts, images and the widgets used to collect the data) and apply the logic rules allowing the survey to react to the user inputs (like showing a question on some condition).
 
-The survey engine, doesn't contains the survey itself, but it expects a [Survey Definition](../general/00-concepts.md#survey-definition) document to describe the specifications of the survey using a declarative language currently represented in [JSON](https://www.json.org/).
+The survey engine, doesn't contain the survey itself, but it expects a [Survey Definition](../general/00-concepts.md#survey-definition) document to describe the specifications of the survey using a declarative language currently represented in [JSON](https://www.json.org/).
 
-Note: The usual "question" is not a direct concept used in this engine, but we use a more general element called "Item" which can be used as a pure display element (section title, note) or as a collection of display elements (title/text) and data collection fields (what we usually call a "question").
+Note: The usual "question" is not a concept directly used in this engine, it provides a more general element called "Item" which can be used as a pure display element (section title, note) or as a collection of display elements (title/text) and data collection fields (what we usually call a "question").
 
-A Survey is composed of different kinds of elements :
+Several pages are available to describe how a Survey Definition is organized.
 
 - [Survey structure](./structure): How Items are organized, grouped and defined
 - [Survey Item](./item) : How an Item and its content is described (to be a "Question" or not), 
@@ -21,7 +21,7 @@ A Survey is composed of different kinds of elements :
 
 # About the Survey Engine
 
-What we call a "survey" can be ambiguous it can refer to several things : the intended data collection (what we want to collect), and the survey implementation, the instrument (what we collect actually ).  
+What we call a "survey" can be ambiguous it can refer to several things : the intended data collection (what we want to collect), and the survey implementation, the instrument (what we actually collect).  
 
 The Survey Engine is composed of two separated (and partly independent)
 
