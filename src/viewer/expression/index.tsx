@@ -4,11 +4,13 @@ import React from "react";
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from '@theme/CodeBlock';
-import { ViewerProps } from "../types";
+import { ViewerDefinition } from "../types";
 import { Expression } from "survey-engine/data_types";
 
-interface ExpressionViewProps extends ViewerProps {
-    expr: Expression;
+type ExpressionDef = Expression | (()=>Expression); 
+
+export interface ExpressionViewProps extends ViewerDefinition {
+    expr: ExpressionDef;
 }
 
 /**
@@ -19,14 +21,16 @@ interface ExpressionViewProps extends ViewerProps {
  */
 export const ExpressionView: React.FC<ExpressionViewProps> = (props) => {
 
-    const json = JSON.stringify(props.expr);
+    const expr = typeof(props.expr) == "function" ? props.expr(): props.expr;
+
+    const json = JSON.stringify(expr);
 
     return <Tabs>
         <TabItem value="expr" label = "JSON" >
             { json }
         </TabItem>
         < TabItem value = "code" label = "Code (case-editor-tools)" >
-            <CodeBlock language="jsx" > { props.codeSnippet } </CodeBlock>           
+            <CodeBlock language="ts" > { props.codeSnippet } </CodeBlock>           
         </TabItem>
     </Tabs>
 }
