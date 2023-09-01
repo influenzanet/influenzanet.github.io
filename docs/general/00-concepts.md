@@ -6,11 +6,11 @@ A Study, for this system is a set of surveys working together, associated to a s
 
 ## Survey System
 
-The Survey System is the set of the [Survey Engine](../survey-engine/) and the [Study Service](../study-service/) allowing all the 
+The Survey System is the set of the [Survey Engine](../survey-engine) and the [Study Service](../study-service) allowing all the 
 
-The [Survey Engine](../survey-engine/) is the client part, dedicated to run a survey using a [Survey Definition](#survey-definition) and sending the response to the [Study Service](../study-service/)
+The [Survey Engine](../survey-engine) is the client part, dedicated to run a survey using a [Survey Definition](#survey-definition) and sending the response to the [Study Service](../study-service)
 
-The [Study Service](../study-service/) is the backend part, with several roles, it manage and provides Survey Definition and Survey Context to a Survey Engine client, it processes event based rules (like when a survey response is submitted) to update the participant state.
+The [Study Service](../study-service) is the backend part, with several roles, it manage and provides Survey Definition and Survey Context to a Survey Engine client, it processes event based rules (like when a survey response is submitted) to update the participant state.
 
 ## Survey Definition
 
@@ -25,9 +25,9 @@ An expression is the way survey and study logic are described. An expression can
 
 Three kind of Expression are used in the system:
 
-- *Survey Expression* (evaluated by [Survey Engine](../survey-engine/) on client side, during the survey running.
+- *Survey Expression* (evaluated by [Survey Engine](../survey-engine) on client side, during the survey running.
    
-- *Study Expression* & *Study Action* (evaluated by the [Study Service](../study-service/), triggered by study event, like response submission).
+- *Study Expression* & *Study Action* (evaluated by the [Study Service](../study-service), triggered by study event, like response submission).
 
 *Survey and Study Expression* are evaluated to a value (like boolean, string, number), like a function.
 
@@ -41,4 +41,4 @@ Participant properties are for example:
 - A set of flags (key-value properties), provided in the Survey Context. Think like a set of variables associated to each participant
 - A list of surveys to be filled by the participants
 
-These properties are updated using the Study Rules, processed by [Study Service](../study-service/) on several events (new participant, response submission,...)
+These properties are updated using the Study Rules, processed by [Study Service](../study-service) on several events (new participant, response submission,...)
