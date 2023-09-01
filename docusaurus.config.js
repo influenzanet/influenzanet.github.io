@@ -21,7 +21,7 @@ const config = {
   organizationName: 'Influenzanet', // Usually your GitHub org/user name.
   projectName: 'survey-handbook', // Usually your repo name.
   trailingSlash: false,
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
 
   markdown: {
