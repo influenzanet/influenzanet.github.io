@@ -28,8 +28,8 @@ const defs: ExpressionViewProps[] = [
         expr: ()=> {
             // @code(client:or)
             return SurveyEngine.logic.or(
-                SurveyEngine.hasResponse('intake.Q1','rg.scg.1'),
-                SurveyEngine.hasResponse('intake.Q2','rg.scg.1')
+            SurveyEngine.hasResponse('intake.Q1','rg.scg.1'),
+            SurveyEngine.hasResponse('intake.Q2','rg.scg.1')
             )
             // @end(client:or)
         }
@@ -39,8 +39,8 @@ const defs: ExpressionViewProps[] = [
         expr: ()=> {
             // @code(client:and)
             return SurveyEngine.logic.and(
-                SurveyEngine.hasResponse('intake.Q1','rg.scg.1'),
-                SurveyEngine.hasResponse('intake.Q2','rg.scg.1')
+            SurveyEngine.hasResponse('intake.Q1','rg.scg.1'),
+            SurveyEngine.hasResponse('intake.Q2','rg.scg.1')
             )
             // @end(client:and)
         }
@@ -50,7 +50,7 @@ const defs: ExpressionViewProps[] = [
         expr: ()=> {
             // @code(client:not)
             return SurveyEngine.logic.not(
-                SurveyEngine.hasResponse('intake.Q1','rg.scg.1')
+            SurveyEngine.hasResponse('intake.Q1','rg.scg.1')
             )
             // @end(client:not)
         }
@@ -71,12 +71,77 @@ const defs: ExpressionViewProps[] = [
         expr: ()=> {
             // @code(client:lt)
             return SurveyEngine.compare.lt(
-                SurveyEngine.getResponseValueAsNum('survey.age','rg.age'),
-                20
+            SurveyEngine.getResponseValueAsNum('survey.age','rg.age'),
+            20
             )
             // @end(client:lt)
         }
-    }
+    },
+    {
+        name:'client:timestampWithOffset',
+        expr: ()=> {
+            // @code(client:timestampWithOffset)
+            return SurveyEngine.timestampWithOffset({years: -1})
+            // @end(client:timestampWithOffset)
+        }
+    },
+    {
+        name:'client:hasResponse',
+        expr: ()=> {
+            // @code(client:hasResponse)
+               // Check if the question intake.Q5 has response int the MultipleChoice (mcg) in the Response Group (rg)
+               return SurveyEngine.hasResponse('intake.Q5', 'rg.mcg')
+            // @end(client:hasResponse)
+        }
+    },
+    {
+        name:'client:getAttribute',
+        expr: ()=> {
+            // @code(client:getAttribute)
+               // Extract participantFlags from context and 'adult' element from it
+               return SurveyEngine.getters.getAttribute(
+                SurveyEngine.getters.getAttribute(SurveyEngine.getters.getContext(), 'participantFlags'),
+                'adult'
+                )
+            // @end(client:getAttribute)
+        }
+    },
+    {
+        name:'client:getAttribute2',
+        expr: ()=> {
+            // @code(client:getAttribute2)
+               // Extract 'adult' from participantFlags and test if it's equal to '1' (flags value are strings)
+               return SurveyEngine.participantFlags.hasKeyAndValue("adult", "1")
+            // @end(client:getAttribute2)
+        }
+    },
+    {
+        name:'client:checkResponseValueWithRegex',
+        expr: ()=> {
+            // @code(client:checkResponseValueWithRegex)
+               // Extract 'adult' from participantFlags and test if it's equal to '1' (flags value are strings)
+               return SurveyEngine.checkResponseValueWithRegex('intake.Q6', 'rg.1', '/[0-9]{5}/')
+            // @end(client:checkResponseValueWithRegex)
+        }
+    },
+    {
+        name:'client:responseHasKeysAll',
+        expr: ()=> {
+            // @code(client:responseHasKeysAll)
+               // 'intake.Q1' multiplechoice group has, at least option checked with key 'cat' AND 'dog' (regardless other checked response)
+               return SurveyEngine.responseHasKeysAll('intake.Q1','rg.mcg', 'cat', 'dog')
+            // @end(client:responseHasKeysAll)
+        }
+    },
+    {
+        name:'client:responseHasOnlyKeysOtherThan',
+        expr: ()=> {
+            // @code(client:responseHasOnlyKeysOtherThan)
+              // 'intake.Q1' multiplechoice group has NOT option checked with key 'cat' NOR 'dog' (regardless other checked response)
+              return SurveyEngine.responseHasOnlyKeysOtherThan('intake.Q1','rg.mcg', 'cat', 'dog')
+            // @end(client:responseHasOnlyKeysOtherThan)
+        }
+    },
 ];
 
 export default defs;

@@ -7,11 +7,46 @@ sidebar_class_name: green
 
 import  { ExpressionViewer } from "@site/src/components/survey";
 
-**Expression** are tree structures to represent a set of operations to be evaluated to produce a value (often boolean). They provides dynamic property evaluation for the survey logic.
+**Expression** represents an operation (possibly nested) to be evaluated to produce a value (often boolean but not always). 
+Expression provides dynamic property evaluation for the survey logic.
+They are represented as a hierarchical data structures (an expression can contain and use the results of nested expressions as arguments)
+
+Expression is a [general concept](../general/concepts) used in several places of the Influenzanet Survey System
 
 An **Expression** is a simple structure that can be either:
 - A typed literal value (numerical, string)
 - A call, with a `name` and a field `data` set of parameters with a list of `Expression`
+
+## Expression definition notation
+
+To make the easier to read the expressions definition we will use a function signature representation 
+`function_name( argument1, argument2, ?optional):return_type` equivalent of the Expression data structure:
+
+ ```json
+{
+    name: 'function_name',
+    data: [
+        argument1,
+        argument2
+    ]
+}
+
+ ```
+
+`return_type` can eventually inform about the kind of value returned by the expression 
+An argument prefixed by '?' mark is optional
+
+Several types of arguments can be provided
+
+- `item_key`: the key path of the item of the survey (i.e. the fully qualified name of the item, from the survey root)
+- `rg_key` : The response component path in the item from the root component (the full path of the response from the root). It always starts with the 'rg.' because the response Group component must have the 'rg' key.
+
+For example,
+
+If you have an Item named 'Q1', in a survey named 'intake' (without question group), item_key will be 'intake.Q1'
+If this Q1 is a single choice question (only one response component), `rg_key` will be 'rg.scg', for a multiple Choice 'rg.mcg'
+
+These path-like identifiers are described in the [Survey Structure](./structure) page.
 
 ## Logical Expression
 
@@ -21,7 +56,7 @@ Each expression argument is evaluated and casted as boolean
 - Numerical result :  `true` if > 0, and `false` if <= 0
 - String result : `true` if not empty, `false` if empty (=='')
 
-Several operators are avalailble:
+Several operators are available:
 
 - `and`(e1, e2) : AND operator (`true` if e1 is `true` AND if e2 is `true`)
 - `or`(e1, e2) : OR operator (`true` if e1 is `true` OR if e2 is `true`)
@@ -30,4 +65,159 @@ Several operators are avalailble:
 <ExpressionViewer name="client:not"/>
 
 ## Comparison operators
+
+- `eq`(e1, e2, ..., en) : Equal operator, true if all operators are equals, if e1 === e2 (... === en)
+- `gt`(e1, e2) : Greater than operator (true if e1 > e2)
+- `gte`(e1, e2) : Greater or equal operator (true if e1 >= e2)
+- `lt`(e1, e2) : Lower than operator (true if e1 < e2)
+- `lte`(e1, e2) : Lower or Equal operator (true if e1 <= e2)
+
+Nota: The Javascript implementation uses the '===' operator, checking for value AND type for equality.
+
+<ExpressionViewer name="client:eq"/>
+
+## Utilities
+
+### `isDefined`()
+
+isDefined Operator test if an expression returns a defined value (i.e. the value is not `undefined` nor `null` for javascript engine).
+
+### `getContext`()
+
+getContext returns the current [Runtime Context](./context), allowing to get Participant attributes 
+
+## `getAttribute`(object, name)
+
+Extract a attribute from an object
+
+This is a low level function Common case is to extract attribute from the context, to check for a Participant flag.
+
+<ExpressionViewer name="client:getAttribute"/>
+
+Fortunately CASE Editor Tools provides some helpers to generate such complex expressions
+
+<ExpressionViewer name="client:getAttribute2"/>
+
+## Responses expressions
+
+These expressions are used to get and test the current survey responses.
+
+### `hasResponse`(item_key, rg_key):boolean
+
+Check if an item has a specific response object (by key)
+
+- `item_key`: key of the item (question)
+- `rg_key` : path of the response component from the root in the question 
+
+<ExpressionViewer name="client:hasResponse"/>
+
+### `getResponseValueAsNum`(item_key, rg_key):number
+
+Get the response value of an Response component of an Item, and parse it as numeric value
+
+- `item_key`: key of the item (question)
+- `rg_key` : path of the response component in the item.
+
+### `getResponseValueAsStr`(item_key, rg_key): string
+
+Get the response value of an Response component of an Item as a string
+
+- `item_key`: key of the item (question)
+- `rg_key` : path of the response component in the item.
+
+### `responseHasKeysAny`(item_key, rg_key, option_key...):boolean
+
+Test if the response component of a item as any response key from the option_key list of value.
+This expression is used to test if the current response of a categorical component have at least one response in a given list
+options are identified by their key value.
+
+- `item_key`: key of the item (question)
+- `rg_key` : path of the response component in the item.
+- option_key... : one or several key of option  
+
+### `responseHasKeysAll`(item_key, rg_key, option_key...):boolean
+
+Same as `responseHasKeysAny`, but test if the current response include all the provided option key
+
+For example, if the question intake.Q1 has the current response 'cat' **AND** 'dog'
+
+<ExpressionViewer name="client:responseHasKeysAll"/>
+
+### `responseHasOnlyKeysOtherThan`(item_key, rg_key, option_key...):boolean
+
+Same as `responseHasKeysAny`, but test if the current response **DOES NOT** include any option key in the provided list
+
+<ExpressionViewer name="client:responseHasOnlyKeysOtherThan"/>
+
+### `checkResponseValueWithRegex`(item_key, rg_key, pattern ):boolean
+
+Check if the response of an item match a the given Regular Expression pattern. The pattern is using <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions">Javascript ECMAScript Regular Expression</a>
+
+<ExpressionViewer name="client:checkResponseValueWithRegex"/>
+
+### `countResponseItems`(item_key, rg_key):number
+
+Count the number of responses selected in a Response component of an item.
+
+If the item is not found or no response is provided yet, the expression will return -1 value.
+
+## Validation
+
+### `getSurveyItemValidation`(item_key, validation_key)
+
+## Time functions
+
+### `timestampWithOffset`(offset, refTime)
+
+- `offset` is the number of seconds to add to the reference time 
+- `refTime` is the reference time (if not provided the current time will be used)
+
+Both are evaluated to number but they can be expressions.
+
+<ExpressionViewer name="client:timestampWithOffset"/>
+
+### `getSecondsSince`(time):number
+
+Returns the number of seconds from the given time and the current time.
+
+time must be evaluated to a Unix timestamp (number of seconds since 1970-01-01), it can be an expression returning the timestamp (Date and time response component returns response as timestamp value)
+
+### `dateResponseDiffFromNow`(item_key, rg_key, ?unit, ?unsigned)
+Evaluate time difference from now using response of an item
+- `item_key`: key of the item (question)
+- `rg_key` : path of the response component from the root in the question (always starts with 'rg.' representing the Response Group Component)
+
+## Low level expression
+
+Most of the time you wont need these expression, but in some case it's necessary to use them.
+
+### `getResponses`()
+
+### `getRenderedItems`()
+
+### `getArrayItemAtIndex`()
+
+### `getArrayItemByKey`()
+
+### `getObjByHierarchicalKey`()
+
+### `getNestedObjectByKey`()
+
+### `findPreviousSurveyResponsesByKey`()
+
+### `getLastFromSurveyResponses`()
+
+### `getPreviousResponses`()
+
+### `filterResponsesByIncludesKeys`()
+
+### `filterResponsesByValue`()
+
+### `getLastFromSurveyItemResponses`()
+
+### `getResponseItem`()
+
+### `parseValueAsNum`(value):number
+
+Evaluate the argument value (can be an expression), and parse it to number
 

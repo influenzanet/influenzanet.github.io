@@ -23,14 +23,14 @@ export const ExpressionView: React.FC<ExpressionViewProps> = (props) => {
 
     const expr = typeof(props.expr) == "function" ? props.expr(): props.expr;
 
-    const json = JSON.stringify(expr);
+    const json = JSON.stringify(expr, null, 1);
 
     return <Tabs>
-        <TabItem value="expr" label = "JSON" >
-            { json }
-        </TabItem>
         < TabItem value = "code" label = "Code (case-editor-tools)" >
             <CodeBlock language="ts" > { props.codeSnippet } </CodeBlock>           
+        </TabItem>
+        <TabItem value="expr" label = "JSON" >
+            <CodeBlock language="json" >{ json }</CodeBlock>  
         </TabItem>
     </Tabs>
 }
