@@ -1,0 +1,27 @@
+---
+sidebar_label: Simple Choices
+---
+import  { SurveyComponent } from "@site/src/components/survey";
+
+# Simple choices based components
+
+Choices components collect responses from a set of predetermined choices.
+Common implementations are single choices (aka radio button) allowing one choice as response, and multiple choices (aka check boxes) allowing multiple choices as a response.
+
+Available Choices are represented by an *option* component
+
+## Single Choice Group
+
+SingleChoice group handles a qualitative input
+
+<SurveyComponent name="singleChoice"/>
+
+## Multiple Choice Group
+
+<SurveyComponent name="MultipleChoice"/>
+
+## Multiple Choice with Exclusive option
+
+To build exclusive option, the trick is to set `disabled` property with an expression checking for the response 
+
+<SurveyComponent name="MultipleChoiceExclusive"/>

@@ -14,8 +14,41 @@ export const DateInput = () => {
   //@end(dateInput)
 }
 
-export default {
-  name: 'dateInput',
-  item: DateInput
-} as ItemViewerDefinition;
+export const YearMonthInput = () => {
+  // @code(YearMonthInput)
+  return SurveyItems.dateInput({
+    itemKey: 'q2',
+    parentKey: 'test',
+    questionText:textMap("A year month question"),
+    dateInputMode: 'YM',
+  });
+  //@end(YearMonthInput)
+}
+
+export const YearInput = () => {
+  // @code(YearInput)
+  return SurveyItems.dateInput({
+    itemKey: 'q2',
+    parentKey: 'test',
+    questionText:textMap("A year question"),
+    dateInputMode: 'Y',
+  });
+  //@end(YearInput)
+}
+
+export default [
+  {
+    name: 'dateInput',
+    item: DateInput
+  },
+  {
+    name: 'YearMonthInput',
+    item: YearMonthInput
+  },
+  {
+    name: 'YearInput',
+    item: YearInput
+  },
+  
+] as ItemViewerDefinition[];
 

@@ -1,0 +1,26 @@
+---
+sidebar_label: Date
+---
+
+# Date Components
+
+import  { SurveyComponent } from "@site/src/components/survey";
+
+Date based components collect date
+
+Response is encoded as a Unix timestamp
+
+The `dateInputMode` property controls the kind of date to be collected :
+
+- 'YMD' will collect full date (year, month, day)
+- 'YM' will collect year and month, response is Unix timestamp of the 2nd day of the month
+- 'Y' will collect year, response is the Unix timestamp of the 2nd of January of the selected year.
+
+## Date Input
+<SurveyComponent name="dateInput"/>
+
+## YearMonthInput 
+<SurveyComponent name="YearMonthInput"/>
+
+## YearInput 
+<SurveyComponent name="YearInput"/>

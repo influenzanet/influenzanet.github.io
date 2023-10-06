@@ -4,7 +4,7 @@ import { getSnippet } from "@site/src/snippets";
 // Load Modules and the raw version to provide code snippets
 
 // Single Choice
-import singleChoice from "./singleChoice";
+import choices from "./choices";
 // Single Choice
 import dateInput  from "./dateInput";
 import text from "./text";
@@ -23,7 +23,7 @@ export const getSurveyViewer = (name: string) => {
     return <ItemView {...def}/>;
 }
  
-registry.add(singleChoice);
+registry.add(choices);
 registry.add(dateInput);
 registry.add(text);
 
