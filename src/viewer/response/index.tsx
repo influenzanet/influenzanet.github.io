@@ -1,5 +1,5 @@
-import { SurveySingleItemView } from "case-web-ui";
-import React from "react";
+import { SurveySingleItemView, SurveyView } from "case-web-ui";
+import React, { useState } from "react";
 import { ResponseItem, SurveyItem, Survey, LocalizedObject } from "survey-engine/data_types";
 
 import Tabs from '@theme/Tabs';
@@ -27,7 +27,10 @@ export const text = (str: string): LocalizedObject => {
 
 const invalidWarning = "Please check your response";
 
-const resolveItem = (surveyItem : SurveyItemProvider) => {
+
+
+const asSurvey = (surveyItem : SurveyItemProvider)=> {
+    
     const item =  typeof(surveyItem) == "function" ? surveyItem() : surveyItem;
     
     // Now resolve texts using survey engine and Survey
@@ -41,6 +44,15 @@ const resolveItem = (surveyItem : SurveyItemProvider) => {
             ]
         }
     }
+    return survey;
+}
+
+const resolveItem = (surveyItem : SurveyItemProvider) => {
+    const item =  typeof(surveyItem) == "function" ? surveyItem() : surveyItem;
+    
+    // Now resolve texts using survey engine and Survey
+    // Mock full a survey
+    const survey = asSurvey(surveyItem);
     const engine = new SurveyEngineCore( survey, {},[], true);
     // Render the survey by resolving all expressions
     const resolvedItem =  engine.getRenderedSurvey().items.at(0)
@@ -54,15 +66,30 @@ const resolveItem = (surveyItem : SurveyItemProvider) => {
  * @returns 
  */
 export const DefaultItemViewer = (props:  ItemViewProps) => {
-    return <SurveySingleItemView
-        renderItem={resolveItem(props.item)}
-        responsePrefill={props.prefill}
-        responseChanged={(response) => console.log(response)}
-        showInvalid={false}
-        languageCode="en"
-        invalidWarning={invalidWarning}
-        showKeys={false}
+    const [response, setResponse] = useState<ResponseItem|undefined>(undefined);
+
+    const showResponse = (r: ResponseItem) => {
+        return <div className="card bg-default">
+                <div className="card-body p-1">
+                <pre className="p-0 m-0">{ JSON.stringify(response,undefined, 1)}</pre>
+            </div>
+        </div>
+    }
+
+    return <div>
+        <SurveyView 
+         survey={asSurvey(props.item)}
+         languageCode='en'
+         backBtnText="Back"
+         nextBtnText="Next"
+         onSubmit={(r)=>setResponse(r[0])}
+         submitBtnText="Submit"
+         invalidResponseText={invalidWarning}
+         showKeys={false}
+         hideBackButton={true}
         />
+        { response ? showResponse(response) : ''}
+    </div>
 }
 
 export interface ItemViewerDefinition extends ViewerDefinition {
@@ -84,7 +111,7 @@ export const ItemView : React.FC<ItemViewProps> = (props) => {
     
     const item = resolveItem(props.item);
 
-    const viewerConf = { ...props, item : item}
+    const viewerConf = { ...props, item : props.item}
 
     const surveyViewer = props.customViewer ?? <DefaultItemViewer {...viewerConf }/>
 
