@@ -3,12 +3,14 @@ import { ItemView, ItemViewProps,  } from "../../../viewer/response";
 import { getSnippet } from "@site/src/snippets";
 // Load Modules and the raw version to provide code snippets
 
-// Single Choice
+import { ViewerRegistry } from "@site/src/viewer";
+
 import choices from "./choices";
-// Single Choice
 import dateInput  from "./dateInput";
 import text from "./text";
-import { ViewerRegistry } from "@site/src/viewer";
+import textInput from "./textInput";
+import matrix from "./matrix";
+import cloze from "./cloze";
 
 const registry = new ViewerRegistry<ItemViewProps>();
 
@@ -26,4 +28,6 @@ export const getSurveyViewer = (name: string) => {
 registry.add(choices);
 registry.add(dateInput);
 registry.add(text);
-
+registry.add(textInput);
+registry.add(matrix);
+registry.add(cloze);

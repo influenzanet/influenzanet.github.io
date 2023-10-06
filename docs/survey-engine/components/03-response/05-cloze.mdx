@@ -1,0 +1,24 @@
+---
+sidebar_label: Cloze question
+---
+import  { SurveyComponent } from "@site/src/components/survey";
+
+# Cloze question
+
+Cloze question can create very flexible input by embedding various response fields into a text.
+A cloze question is defined defined by a list of [*options*](../option), some can be just a text (with no input) or input field. 
+The options are rendered sequentially, producing the text with embedded fields.
+
+As in [choices based question](./choices) the `role` of each option determines the kind of rendered element.
+
+Accepted roles are :
+
+- `text` : A textual part (no input)
+- `markdown` : A markdown formatted block of text
+- `input`: A text input field
+- `dateInput`: A date input
+- `numberInput` 
+- `lineBreak` 
+- `dropDownGroup`: list of choices (`items` property of the options defines the choice list)
+
+<SurveyComponent name="ClozeInput"/>

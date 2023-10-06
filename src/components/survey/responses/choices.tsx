@@ -14,6 +14,21 @@ export const SingleChoiceItem = () => {
   });
   // @end(singleChoice)
 }
+
+export const DropDownItem = () => {
+  // @code(DropDownItem)
+  return SurveyItems.dropDown({
+    itemKey:'t1',
+    parentKey:'test',
+    questionText: textMap("DropDown Example "),
+    responseOptions:[
+        {'key': '1', content: textMap("Option One"), role: 'option' },
+        {'key': '2', content: textMap("Option Two"), role: 'option' },
+        {'key': '3', content: textMap("Option Three"), role: 'option' },
+    ]
+  });
+  // @end(DropDownItem)
+}
  
 export const MultipleChoiceItem = () => {
   // @code(MultipleChoice)
@@ -49,6 +64,25 @@ export const MultipleChoiceExclusiveItem = () => {
   // @end(MultipleChoiceExclusive)
 }
 
+export const MultipleChoiceOpenItem = () => {
+  // @code(MultipleChoiceOpenItem)
+  return SurveyItems.multipleChoice({
+    itemKey:'t2',
+    parentKey:'test',
+    questionText: textMap("Multiple Choice Example "),
+    responseOptions:[
+        {'key': '1', content: textMap("Choice 1"), role: 'option' },
+        {'key': '2', content: textMap("Choice 2"), role: 'option' },
+        {
+          'key': '3', 
+          content: textMap("Choice 3"), 
+          role: 'input',
+        },
+    ]
+  });
+  // @end(MultipleChoiceOpenItem)
+}
+
 
 export default [
     {
@@ -69,6 +103,13 @@ export default [
     name: 'MultipleChoiceExclusive',
     item: MultipleChoiceExclusiveItem,
   },
-
+  {
+    name: 'MultipleChoiceOpenItem',
+    item: MultipleChoiceOpenItem,
+  },
+  {
+    name: 'DropDownItem',
+    item: DropDownItem
+  }
   
 ] as ItemViewerDefinition[];

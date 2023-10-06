@@ -42,3 +42,9 @@ Participant properties are for example:
 - A list of surveys to be filled by the participants
 
 These properties are updated using the Study Rules, processed by [Study Service](../study-service) on several events (new participant, response submission,...)
+
+## Translatable
+
+The [Survey Definition](#survey-definition) includes translations for all text to be presented to the user.
+The texts are provided in a little structure associating text and language code called Translatable. A survey can contain the translations for several languages.
+Many fields in a [Survey Definition](#survey-definition) contains this kind of structure containing all the translations.

@@ -1,0 +1,49 @@
+---
+sidebar_label: Simple Choices
+---
+import  { SurveyComponent } from "@site/src/components/survey";
+
+# Simple choices based components
+
+Choices components collect responses from a set of predetermined choices.
+Common implementations are single choices (aka radio button) allowing one choice as response, and multiple choices (aka check boxes) allowing multiple choices as a response.
+
+Available Choices are represented by a list of *option* components. The [Option](../option) page presents the available fields in option
+
+## Single Choice Group
+
+SingleChoice group handles a qualitative input
+
+<SurveyComponent name="singleChoice"/>
+
+## Single Choice Group
+
+Drop down component handles a qualitative input with a drop downn 
+
+<SurveyComponent name="DropDownItem"/>
+
+## Multiple Choice Group
+
+<SurveyComponent name="MultipleChoice"/>
+
+## Multiple Choice with Exclusive option
+
+To build exclusive option, the trick is to set `disabled` property with an expression checking for the response 
+
+<SurveyComponent name="MultipleChoiceExclusive"/>
+
+## Choice associated with a extra field
+
+To achieve this, the `role` field of the option can be change to an input type 
+Several roles are available for options:
+
+- 'option': default value, will only show the option label
+- 'number': Show an number extra field 
+- 'input': 'input',
+- 'time': 'timeInput',
+- 'date': 'dateInput', // Only available for singleChoice group
+
+`optionProps` field of the option component
+
+<SurveyComponent name="MultipleChoiceOpenItem"/>
+

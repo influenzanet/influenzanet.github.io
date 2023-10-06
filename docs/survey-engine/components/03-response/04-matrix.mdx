@@ -1,0 +1,59 @@
+---
+sidebar_label: Matrix
+---
+import  { SurveyComponent } from "@site/src/components/survey";
+
+# Matrix Component
+
+## Description 
+
+Matrix component can be used to collect data in a table-like layout with several rows or columns.
+
+A matrix component is composed by :
+
+- A list of `rows`
+- A list of `columns`
+- A `responseType` : defines the what kind of data is collected in each cell, can be 
+    - 'dropdown' : A list of choices
+    - 'input' : Textual input field **(Not implemented yet)**
+    - 'numberInput': Number input field **(Not implemented yet)**
+
+### Rows
+
+Each *row* can have several properties:
+ - `key`: row identifier (must be unique in the matrix rows)
+ - `role`: can be a 'row', or a 'category'
+ - `displayCondition` : an [Expression](../expression)
+ - `label` : a [Translatable](../../../general/concepts#translatable) row label 
+ - `className`: style(s) name
+
+### Columns
+
+Each columns are defined by:
+- `key`: a column identifier (must be unique in the matrix columns)
+- `label`: [Translatable](/general/concepts#translatable) column label
+
+:::warning Warning
+rows and columns identifiers are very important, they will identify the response cell in the stored response. They must be unique for each kind.
+:::
+
+### Dropdown options
+
+ the property `dropdownConfig` defines the dropdown options with:
+
+ - `unselectedLabeL`: [Translatable](/general/concepts#translatable) text to be shown when no option is selected
+ - `options` : list of option (only `key` and `label` properties are expected here for each option).
+
+## Examples
+
+### Matrix with Dropdown cell
+
+<SurveyComponent name="MatrixDropDownItem"/>
+
+### Matrix with Dropdown cell, and row category
+
+<SurveyComponent name="MatrixDropDownCategoryItem"/>
+
+### Matrix with input cell
+
+<SurveyComponent name="MatrixInputItem"/>

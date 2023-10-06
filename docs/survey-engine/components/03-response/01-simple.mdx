@@ -1,0 +1,32 @@
+---
+sidebar_label: Simple Input
+---
+import  { SurveyComponent } from "@site/src/components/survey";
+
+# Text Input
+
+TextInput component collect a simple text.
+
+Several properties can be used to control the text
+
+- `placeholderText`: A Translatable to define the placeholder text 
+- `inputMaxWidth`: Maximum width of the element
+- `maxLength`: Max length of the response
+- `transformLetterCaseTo` : transform response case (accepted values : 'upper', 'lower')
+
+<SurveyComponent name="TextInput"/>
+
+# MultilineTextInput
+
+This component allow to collect several lines of text.
+
+<SurveyComponent name="MultilineTextInput"/>
+
+# Numeric Input
+
+NumericInput is dedicated to collect numbers 
+
+Min and max range can be defined in the `componentProperties` field.
+These fields can be a literal number (e.g. 120) or an [Expression](../../expressions) returning a number to define the range dynamically.
+
+<SurveyComponent name="NumberInput"/>

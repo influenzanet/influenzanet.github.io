@@ -27,9 +27,7 @@ export const text = (str: string): LocalizedObject => {
 
 const invalidWarning = "Please check your response";
 
-
-
-const asSurvey = (surveyItem : SurveyItemProvider)=> {
+const asSurvey = (surveyItem : SurveyItemProvider, id?: number)=> {
     
     const item =  typeof(surveyItem) == "function" ? surveyItem() : surveyItem;
     
@@ -38,7 +36,7 @@ const asSurvey = (surveyItem : SurveyItemProvider)=> {
     const survey: Survey = {
         versionId: '1',
         surveyDefinition: {
-            key: 'test',
+            key: 'test' + (id ?? ''),
             items: [
                 item
             ]
@@ -76,9 +74,9 @@ export const DefaultItemViewer = (props:  ItemViewProps) => {
         </div>
     }
 
-    return <div>
+    return <div className={ "survey-viewer-" + props.id }>
         <SurveyView 
-         survey={asSurvey(props.item)}
+         survey={asSurvey(props.item, props.id)}
          languageCode='en'
          backBtnText="Back"
          nextBtnText="Next"
@@ -98,6 +96,7 @@ export interface ItemViewerDefinition extends ViewerDefinition {
 }
 
 export interface ItemViewProps extends ItemViewerDefinition {
+    id?: number; // id used to make each component unique (defined during registration)
     customViewer?: React.ReactNode // Will use the DefaultItemViewer with this configuration if not provided
 }
 

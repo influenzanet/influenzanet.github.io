@@ -5,14 +5,18 @@ export class ViewerRegistry<T extends ViewerDefinition> {
 
     viewers: Map<string, T>;
 
+    count: number;
+
     constructor() {
         this.viewers = new Map();
+        this.count = 0;
+
     }
 
     registerViewer(def: T) {
         const codeSnippet = getSnippet(def.name) ?? 'Code snippet not found for "'+def.name+'"';
-
-        this.viewers.set(def.name, {...def, codeSnippet: codeSnippet });
+        ++this.count;
+        this.viewers.set(def.name, {...def, codeSnippet: codeSnippet , id: this.count});
     }
 
     add(defs: T|T[]) {
