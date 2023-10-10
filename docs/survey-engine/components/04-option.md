@@ -12,7 +12,7 @@ Mandatory:
 
 Optional properties:
 
-- `content`: Translatable for the label
+- `content`: [Localized Text](../../general/concepts#localized) for the label
 - `items`: list of sub options
 - `description`: 
 
@@ -22,7 +22,7 @@ Optional properties:
 - `optionProps`: Properties useable to define some extra options for some roles, each can be an [ExpressionArg](../expressions)
   - `min`, `max` : range for numeric input
   - `stepSize` : step value
-  - `dateInputMode` : Kind of date input (described in [date componenent](./response/date))
+  - `dateInputMode` : Kind of date input (described in [date component](./response/date))
 
 ## Option roles
 

@@ -142,6 +142,15 @@ const defs: ExpressionViewProps[] = [
             // @end(client:responseHasOnlyKeysOtherThan)
         }
     },
+    {
+        name:'i18n:dateResponseDiffFromNow',
+        expr: ()=> {
+            // @code(i18n:dateResponseDiffFromNow)
+              return SurveyEngine.dateResponseDiffFromNow("survey.age","rg.date", "years", true);
+            // @end(i18n:dateResponseDiffFromNow)
+        }
+    },
+    
 ];
 
 export default defs;

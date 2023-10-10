@@ -24,14 +24,14 @@ Each *row* can have several properties:
  - `key`: row identifier (must be unique in the matrix rows)
  - `role`: can be a 'row', or a 'category'
  - `displayCondition` : an [Expression](../expression)
- - `label` : a [Translatable](../../../general/concepts#translatable) row label 
+ - `label` : a [Localized Text](../../../general/concepts#localized) row label 
  - `className`: style(s) name
 
 ### Columns
 
 Each columns are defined by:
 - `key`: a column identifier (must be unique in the matrix columns)
-- `label`: [Translatable](/general/concepts#translatable) column label
+- `label`: [Localized Text](/general/concepts#localized) column label
 
 :::warning Warning
 rows and columns identifiers are very important, they will identify the response cell in the stored response. They must be unique for each kind.
@@ -41,7 +41,7 @@ rows and columns identifiers are very important, they will identify the response
 
  the property `dropdownConfig` defines the dropdown options with:
 
- - `unselectedLabeL`: [Translatable](/general/concepts#translatable) text to be shown when no option is selected
+ - `unselectedLabeL`: [Localized Text](/general/concepts#localized) text to be shown when no option is selected
  - `options` : list of option (only `key` and `label` properties are expected here for each option).
 
 ## Examples

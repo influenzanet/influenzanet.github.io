@@ -182,10 +182,12 @@ Returns the number of seconds from the given time and the current time.
 
 time must be evaluated to a Unix timestamp (number of seconds since 1970-01-01), it can be an expression returning the timestamp (Date and time response component returns response as timestamp value)
 
-### `dateResponseDiffFromNow`(item_key, rg_key, ?unit, ?unsigned)
+### `dateResponseDiffFromNow`(item_key, rg_key, ?unit, ?unsigned) {#dateResponseDiffFromNow}
 Evaluate time difference from now using response of an item
 - `item_key`: key of the item (question)
 - `rg_key` : path of the response component from the root in the question (always starts with 'rg.' representing the Response Group Component)
+- `unit` : time unit to use as output, accepted values are 'years', 'months', 'weeks', 'hours', 'minutes', 'seconds'
+- `unsigned`:  flag to have a unsigned result (ignore sign of the result) if the value is evaluated to true (e.g. 1), otherwise result can output negative value.
 
 ## Low level expression
 
