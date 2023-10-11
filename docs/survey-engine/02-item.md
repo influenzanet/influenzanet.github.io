@@ -10,8 +10,8 @@ It holds several properties :
 
 ## Survey Item Components
 
-Components defines the content of an SingleItem. They can be composed and organized to create simple survey block (textual note, a simple question) or complex question (several text block, several interactive data collection fields, ...).
-As the Survey Items, they can also react to logic rules to make them interactive. For example each component visibility can be controlled by a rule, making it visible only if a condition (based for example on the responses) is fulfilled.
+Components define the content of an SingleItem. They can be composed and organized to create simple survey block (textual note, a simple question) or complex question (several text blocks, several interactive data collection fields, ...).
+As the Survey Items, they can also react to logic rules to make them interactive. For example each component visibility can be controlled by an expression rule, making it visible only if a condition (based for example on the responses) is fulfilled.
 
 The [components](./components/overview)
 
