@@ -7,46 +7,8 @@ sidebar_class_name: green
 
 import  { ExpressionViewer } from "@site/src/components/survey";
 
-**Expression** represents an operation (possibly nested) to be evaluated to produce a value (often boolean but not always). 
-Expression provides dynamic property evaluation for the survey logic.
-They are represented as a hierarchical data structures (an expression can contain and use the results of nested expressions as arguments)
-
-Expression is a [general concept](../general/concepts) used in several places of the Influenzanet Survey System
-
-An **Expression** is a simple structure that can be either:
-- A typed literal value (numerical, string)
-- A call, with a `name` and a field `data` set of parameters with a list of `Expression`
-
-## Expression definition notation
-
-To make the easier to read the expressions definition we will use a function signature representation 
-`function_name( argument1, argument2, ?optional):return_type` equivalent of the Expression data structure:
-
- ```json
-{
-    name: 'function_name',
-    data: [
-        argument1,
-        argument2
-    ]
-}
-
- ```
-
-`return_type` can eventually inform about the kind of value returned by the expression 
-An argument prefixed by '?' mark is optional
-
-Several types of arguments can be provided
-
-- `item_key`: the key path of the item of the survey (i.e. the fully qualified name of the item, from the survey root)
-- `rg_key` : The response component path in the item from the root component (the full path of the response from the root). It always starts with the 'rg.' because the response Group component must have the 'rg' key.
-
-For example,
-
-If you have an Item named 'Q1', in a survey named 'intake' (without question group), item_key will be 'intake.Q1'
-If this Q1 is a single choice question (only one response component), `rg_key` will be 'rg.scg', for a multiple Choice 'rg.mcg'
-
-These path-like identifiers are described in the [Survey Structure](./structure) page.
+Expression is a a general concept used in several places of the Influenzanet Survey System. 
+Before reading this page you should read the [general concept of expressions](../general/expressions).
 
 ## Logical Expression
 
