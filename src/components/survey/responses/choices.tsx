@@ -1,6 +1,7 @@
 import { SurveyEngine, SurveyItems } from "case-editor-tools/surveys";
 import { textMap, ItemViewerDefinition } from "../../../viewer/response";
 import React from "react";
+import text from "./text";
 
 export const SingleChoiceItem = () => {
   // @code(singleChoice)
@@ -84,6 +85,34 @@ export const MultipleChoiceOpenItem = () => {
 }
 
 
+export const MultipleChoiceComplexOption = () => {
+  // @code(MultipleChoiceComplexOption)
+  return SurveyItems.multipleChoice({
+    itemKey:'t2',
+    parentKey:'test',
+    questionText: textMap("Multiple Choice Example "),
+    responseOptions:[
+        {'key': '1', role: 'option',
+          items: [
+            {"key": "1", role:"text", content: textMap("Main text of the option")},
+            {"key":"2",  role:"text", content: textMap("Small text"), style: [{key:"className", value:"d-block fs-6"}]}
+          ]
+        },
+        {'key': '2', content: textMap("Choice 2"), role: 'option' },
+        {
+          'key': '3', 
+          role: 'option',
+          items: [
+            {"key":"1", role:"text", content: textMap("text in bold"), style: [{key:"className", value:"fw-bold"}]},
+            {"key":"2", role:"text", content: textMap(" text in red"), style: [{key:"className", value:"text-danger"}]}
+          ]
+        },
+    ]
+  });
+  // @end(MultipleChoiceComplexOption)
+}
+
+
 export default [
     {
     name: 'singleChoice',
@@ -107,6 +136,11 @@ export default [
     name: 'MultipleChoiceOpenItem',
     item: MultipleChoiceOpenItem,
   },
+  {
+    name: 'MultipleChoiceComplexOption',
+    item: MultipleChoiceComplexOption,
+  },
+  
   {
     name: 'DropDownItem',
     item: DropDownItem

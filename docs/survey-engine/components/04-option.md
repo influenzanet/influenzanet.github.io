@@ -1,7 +1,7 @@
 
 # Option component
 
-*Option* component is used in several *Response* component to represent a possible choice in a list.
+*Option* component is used in several *Response* components to represent a list of possible choices.
 
 Each option has several properties:
 
@@ -28,15 +28,25 @@ Optional properties:
 
 Option roles
 
-| Role          | Cloze  | SingleChoice | MultipleChoice |
-| --------------| :-----:| :-----------:| :------------: |
-| text          |   X    |       X      |       X        |
-| input         |   X    |       X      |       X        |
-| numberInput   |   X    |       X      |       X        |
-| dateInput     |   X    |       X      |                |
-| timeInput     |   X    |              |       X        |
-| markdow       |   X    |              |                |
-| lineBreak     |   X    |              |                |
-| dropDownGroup |   X    |              |                |
-| cloze         |        |      X       |       X        |
+| Role           | Cloze  | SingleChoice | MultipleChoice |
+| ---------------| :-----:| :-----------:| :------------: |
+| text           |   X    |       X      |       X        |
+| input          |   X    |       X      |       X        |
+| numberInput    |   X    |       X      |       X        |
+| dateInput      |   X    |       X      |                |
+| timeInput      |   X    |              |       X        |
+| markdow        |   X    |              |                |
+| lineBreak      |   X    |              |                |
+| dropDownGroup  |   X    |              |                |
+| cloze          |        |      X       |       X        |
+| dateDisplay(*) |        |              |                |
 
+## Complex Options
+
+An option Component can be a group component with a list of children.
+
+This can be used for 2 cases :
+
+- Provide a styled option label (each child of the option component will hold a text portion with a specific style)
+- For cloze option, to mix input and textual parts in the same paragraph.
+ 

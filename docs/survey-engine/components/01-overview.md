@@ -38,7 +38,7 @@ Response dedicated roles:
 - input
 - numberInput
 - sliderNumeric, sliderNumericRange, sliderCategorical
-- 'option' : component describing an option in a list of possible choices
+- 'option' : component describing an option in a list of possible choices (see [Option](/option) page)
 
 ## Common Fields of components
 
@@ -46,6 +46,7 @@ Response dedicated roles:
 - `displayCondition`: rules for displaying the component
 - `properties`: properties to describes constraints and parameters of a component (like min/max value)
 - `disabled` : rules for disabling component
+- `style`: properties uses to describe visual interface (see below)
 
 For group component only
 - `order` : order of components (for Group component), using an expression, 'sequential' named expression is commonly used
@@ -57,3 +58,13 @@ Most of fields are represented as structure called `Expression`. They can be eva
 Component can also have keys uniquely identifying the component in the Item.
 
 Keys are mandatory for Response component, because they are used as to identify the response field. An item can output several values, and the component provided the data is identified by its key in the response data structure.
+
+## Component Styles
+
+The `styles` component property is an array of elements used to define visual properties. Each element has 2 fields `key`, and `value`.
+
+Several commonly used keys :
+
+- `className` : Define the CSS classes to be defined for the component (applied to the container of the component, can be span, div)
+- `inputMaxWidth` : Max with of an input (useable with TextInput and NumberInput)
+- `labelPlacement` :  Placement of the label in NumberInput fields
