@@ -38,7 +38,7 @@ Response dedicated roles:
 - input
 - numberInput
 - sliderNumeric, sliderNumericRange, sliderCategorical
-- 'option' : component describing an option in a list of possible choices (see [Option](/option) page)
+- 'option' : component describing an option in a list of possible choices (see [Option](./option) page)
 
 ## Common Fields of components
 

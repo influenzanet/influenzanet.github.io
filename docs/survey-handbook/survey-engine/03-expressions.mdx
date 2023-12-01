@@ -15,7 +15,7 @@ Before reading this page you should read the [general concept of expressions](..
 Logical expressions evaluate the logical operations using boolean result of one or several expression evaluated value.
 Each expression argument is evaluated and casted as boolean 
 
-- Numerical result :  `true` if > 0, and `false` if <= 0
+- Numerical result :  `true` if &gt; 0, and `false` if &lt;= 0
 - String result : `true` if not empty, `false` if empty (=='')
 
 Several operators are available:
@@ -29,10 +29,10 @@ Several operators are available:
 ## Comparison operators
 
 - `eq`(e1, e2, ..., en) : Equal operator, true if all operators are equals, if e1 === e2 (... === en)
-- `gt`(e1, e2) : Greater than operator (true if e1 > e2)
-- `gte`(e1, e2) : Greater or equal operator (true if e1 >= e2)
-- `lt`(e1, e2) : Lower than operator (true if e1 < e2)
-- `lte`(e1, e2) : Lower or Equal operator (true if e1 <= e2)
+- `gt`(e1, e2) : Greater than operator (true if e1 &gt; e2)
+- `gte`(e1, e2) : Greater or equal operator (true if e1 &gt;= e2)
+- `lt`(e1, e2) : Lower than operator (true if e1 &lt; e2)
+- `lte`(e1, e2) : Lower or Equal operator (true if e1 &lte; e2)
 
 Nota: The Javascript implementation uses the '===' operator, checking for value AND type for equality.
 

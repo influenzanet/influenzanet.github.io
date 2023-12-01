@@ -5,7 +5,7 @@ sidebar_class_name: green
   
 # Expressions
 
-Expression is a [general concept](../concepts) used in several places of the Influenzanet Survey System.
+Expression is a [general concept](./concepts) used in several places of the Influenzanet Survey System.
 Expressions provide dynamic property evaluation for the survey logic and logic in study rules.
 
 They are represented as a hierarchical data structure (an expression can contain and use the results of nested expressions as arguments) 

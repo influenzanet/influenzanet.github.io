@@ -6,7 +6,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Influenzanet Survey Handbook',
+  title: 'Influenzanet Documentation',
   tagline: 'All you want to know about survey engine',
   favicon: 'img/favicon.ico',
 
@@ -14,12 +14,12 @@ const config = {
   url: 'https://influenzanet.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/survey-handbook/',
+  baseUrl: '/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'Influenzanet', // Usually your GitHub org/user name.
-  projectName: 'survey-handbook', // Usually your repo name.
+  organizationName: 'influenzanet', // Usually your GitHub org/user name.
+  projectName: 'influenzanet.github.io', // Usually your repo name.
   trailingSlash: false,
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
@@ -75,7 +75,7 @@ const config = {
       // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
       navbar: {
-        title: 'Survey Handbook',
+        title: 'Documentation',
         logo: {
           alt: 'Influenzanet Logo',
           src: 'https://influenzanet.info/assets/img/logo/influenzaNet/influenzanet_logo.png',
@@ -83,9 +83,15 @@ const config = {
         items: [
           {
             type: 'docSidebar',
-            sidebarId: 'tutorialSidebar',
+            sidebarId: 'systemSidebar',
             position: 'left',
-            label: 'Documentation',
+            label: 'The platform',
+          },
+          {
+            type: 'docSidebar',
+            sidebarId: 'surveySidebar',
+            position: 'left',
+            label: 'Survey Handbook',
           },
           //{to: '/blog', label: 'Blog', position: 'left'},
           {
@@ -103,7 +109,7 @@ const config = {
             items: [
               {
                 label: 'About',
-                to: '/docs/intro',
+                to: '/about/',
               },
             ],
           },

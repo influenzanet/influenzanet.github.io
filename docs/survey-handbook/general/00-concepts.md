@@ -37,11 +37,7 @@ Three kind of Expression are used in the system:
 
 A *participant*, is the subject of the data collection. In this Survey system, a *participant** is only represented by a set of properties giving a persistent state for the subject of the data collection (they are mostly defined by the study/survey designer, we dont manage credentials, login, username here,). So participant is an abstract concept to design a context/state of a subject in a study/survey. It can be a human, or not depending of the study.
 
-Participant properties are for example:
-- A set of flags (key-value properties), provided in the Survey Context. Think like a set of variables associated to each participant
-- A list of surveys to be filled by the participants
-
-These properties are updated using the Study Rules, processed by [Study Service](../study-service) on several events (new participant, response submission,...)
+Participants and associated data are described in [Study service](../study-service/participants)
 
 ## Localized Text {#localized}
 
