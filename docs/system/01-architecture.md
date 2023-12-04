@@ -86,10 +86,16 @@ Each database name is constructed using the following schema:
 
 For example, for the namespace `prod` (using prefix "prod_" ), instance 'italy',  userDB will be `prod_italy_users`
 
+Except for global DB, wich is share across instances, and has only prefix
+
+    [dbPrefix]global-infos
+
+Example: prod_global-infos (using prefix "prod_")
+
 Database names (without prefix/instance):
  - `users` : User service Database (used by Logging service too)
- - `messages`
- - `study`
+ - `messageDB`
+ - `studyDB`
 
 ## Technical choices:
 
