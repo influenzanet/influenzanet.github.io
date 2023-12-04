@@ -36,6 +36,17 @@ Influenzanet Surveillance specific project:
 
 - https://github.com/influenzanet/participant-webapp : Boilerplate implementation for Participant web app
 
+### Survey Viewer
+
+Application to render survey from survey definition without the need to have the full system running,
+
+- https://github.com/grippenet/survey-viewer (Grippenet version with enhancements)
+- https://github.com/case-framework/survey-viewer 
+
+Surveys definition can be uploaded or provided by a survey provider service (to share definition across a team for example)
+
+- https://github.com/grippenet/survey-provider-service
+
 ### Survey libraries
 
 - https://github.com/influenzanet/survey-engine.ts : Survey Engine library (logic and survey structure)
@@ -57,7 +68,7 @@ Library to build survey programmatically (used by common-study-definition)
 - https://github.com/case-framework/case-editor-tools (main repo)
 - https://github.com/influenzanet/case-editor-tools (Influenzanet fork)
 
-### Survey tools
+#### Survey tools
 Library to work with surveys (post processing/validation)
 
 - https://github.com/influenzanet/survey-tools.ts
