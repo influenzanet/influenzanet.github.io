@@ -2,6 +2,8 @@
 sidebar_label: Response data
 ---
 
+# Response Data
+
 ## General structure
 
 Each survey response will create a new entry in the [surveyResponses collection](./#database)

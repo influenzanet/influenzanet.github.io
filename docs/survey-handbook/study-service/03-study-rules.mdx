@@ -1,0 +1,52 @@
+---
+sidebar_label: Study Rules
+---
+import  { ExpressionViewer } from "@site/src/components/survey";
+
+# Study Rules
+
+Study rules are executable operations defined for a study. They are defined using the studyExpressions language, using similar operations to the survey expression ones but they can also use Action expressions. `Action` have side effect on the study data (modifying participant state) or trigger action of the system (sending a notification). Concrete examples are given below.
+
+Study rules are the way to define the logic at the study level.
+
+There are 2 ways to use study rules:
+1. By defining them inside the study as internal study rules, they are run each time a study event is triggered like submit when a survey response is submitted or timer when the study timer periodically raise it. The execution of these rules are automatic.
+
+2. By running a custom rule, using an administration tool, and apply it to all or a subset of participants, this way is useful to run a one shot operation, like manually assign survey or updating flag for some participants (when eligible participants have ben determined externally from the system).
+
+Examples of usage : 
+
+- assign a new survey to a participant, conditionally to the response of another one (create a sequence of surveys)
+- create a [report](./reports) of a participant based on his response 
+- trigger a message notification to researcher or to the participant.
+- define a participant flag based on survey response
+- trigger request to an external service (previously registered)
+
+## Real life examples
+
+### Assign a survey based on survey response
+
+The rules will be defined as follow:
+
+- running on submit event
+- check the survey key is 'profile' 
+- if survey response has women for question gender then assign new survey 'womansurvey' to the participant
+
+<ExpressionViewer name="study:rules-assign-survey"/>
+
+### Show a question based on another survey's responses
+
+if you want to have a question shown only for participants with a given condition defined in another survey, you can use a rule creating a flag depending on the 
+survey providing the condition and use the flag in the second survey to trigger the question.
+
+Let's say you want the condition to be women over 50 and you have a first survey named 'profile' asking for age and gender 
+the study rule will be define as follow:
+
+running on submit event
+check thd survey key is 'profile' 
+if survey response has women for question gender and a value greater than 50 for question age
+then do, update participant flag women_50 to 1 else update participant flag women_50 to 0 
+
+you can now use the flag women_50, in the second survey and trigger the question only if this flag has the value 1 (see survey rules)
+
+<ExpressionViewer name="study:rules-assign-question"/>

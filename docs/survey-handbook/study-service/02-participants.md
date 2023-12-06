@@ -2,7 +2,7 @@
 sidebar_label: Participants
 ---
 
-## Study Participants
+# Study Participants
 
 A Study `Participant` represents an individual (human or not) subject of the survey responses (each response is associated with a `Participant`).
 
@@ -13,7 +13,7 @@ A Participant is associated with a persistant **state** containing the participa
 - `status` : Status of the participants in the study (can be `active`, `temporary`,`exited`,`accountDeleted`)
 - `enteredDate`: when the participant joined the study
 - `flags` : A list of key-values
-- `currentStudySession`: 
+- `currentStudySession`: The current session the participant is involved into
 
 ## Participant Status {#status}
 
@@ -25,7 +25,7 @@ A Participant is associated with a persistant **state** containing the participa
 ## Participants flags {#flags}
 
 Participants flag allows to define a flag (with a name) and a value (a string) as a dynamic property.
-Flags are available in Survey Context during the filling of the reponse (the flags can be used in survey logic), and in the study rules.
+Flags are available in Survey Context during the filling of the response (the flags can be used in survey logic), and in the study rules.
 
 The technical platform does not define any flag, it's up to the team managing the platform to define the flags needed to provide the study and survey logic they want.
 Influenzanet Surveillance define some flags to be used with the common survey (see [common-study-definition](https://github.com/influenzanet/common-study-definition))
@@ -69,9 +69,9 @@ The `profile` ID is transformed by the mapping operator to a `participantID`. Th
 - A Study secret, specific of a study (and MUST be different across studies)
 
 This ensures:
-- A profile is mapped to a unique participant ID for a given study, and will be different for another study (if the study secret is different). Strictly speaking the unicity of mapping is not garanteed but using an hashing function like SHA256 make the risk of collision (producing the same participantID for two different user's profile is very unlikely).
+- A profile is mapped to a unique participant ID for a given study, and will be different for another study (if the study secret is different). Strictly speaking the mapping is not guaranteed to be unique but using an hashing function like SHA256 make the risk of collision (producing the same participantID for two different user's profile) is very unlikely.
 
-Mapping operators are based on common cryptographic, making the reverse operation (from `participantID` to `profileID` very difficult, especially if secrets are not known, which is why we call them secret).
+Mapping operators are based on common cryptographic operations, making the reverse operation (from `participantID` to `profileID` very difficult, especially if secrets are not known, which is why we call them secret).
 
 Available operators are :
 - "same" : identity operator (profileID will be the same as participantID, not obfuscation)

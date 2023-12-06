@@ -2,23 +2,25 @@
 sidebar_label: Study
 ---
 
+# Study
+
 A *Study* is the hightest level data entity of the survey system. A platform's instance can manage several studies but studies are considered as **independent** and are not intended to share participants and/or surveys from each other in the common use case.
 
-From an epidemiological point of view a system *Study* is a broader concept than what we can mean as study in the field (think about namespace or global project). If several epidemiological studies are intended to share the same participants, or data across surveys (to share participants data) they are ancillaries studies for a more global project (which is the system "Study" for the platform). 
+*Study* here is not the exact same as what we can mean in the epidemiological field and can be more global (think about namespace or global project). If several epidemiological studies are intended to share the same participants, or data across surveys (to share participants data) they are ancillaries studies for a more global project (which is the system "Study" for the platform). 
 
 A *Study* contains (related entities):
-- Surveys
+- Surveys, used by the [Survey Engine](../survey-engine/) to collect data from participants
 - A set of [Participants](./participants)
-- A set of rules, reacting to study events
+- A set of [rules](./study-rules), reacting to study events
 
 And have some properties:
-- `Key`: Identifiying the study (used to refer it in administration tools)
+- `Key`: Identifying the study (used to refer it in administration tools)
 - `SecretKey`: A secret value used of [participant mapping](./participants#mapping)
 - Some labelling properties (title, description, ...)
 - `SystemDefaultStudy` flag: indicate the study is the one to show to participant if none is selected (in case of several studies are defined)
 - Start and Ending date
 - Status (can be 'active' or 'inactive')
-- Notification Subscriptions to be able to sed notificiation on study event
+- Notification Subscriptions to be able to sed notification on study event
 
 ## Study Events
 
