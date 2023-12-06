@@ -150,6 +150,22 @@ const defs: ExpressionViewProps[] = [
             // @end(i18n:dateResponseDiffFromNow)
         }
     },
+    {
+        name:'client:hasParticipantFlag',
+        expr: ()=> {
+            // @code(client:hasParticipantFlag)
+              return SurveyEngine.participantFlags.hasKey('my_flag')
+            // @end(client:hasParticipantFlag)
+        }
+    },
+    {
+        name:'client:hasParticipantFlagValue',
+        expr: ()=> {
+            // @code(client:hasParticipantFlagValue)
+              return SurveyEngine.participantFlags.hasKeyAndValue('my_flag', '1')
+            // @end(client:hasParticipantFlagValue)
+        }
+    },
     
 ];
 

@@ -2,12 +2,13 @@ import { ViewerRegistry } from "@site/src/viewer";
 import { ExpressionView, ExpressionViewProps } from "@site/src/viewer/expression";
 import React from "react";
 
-import clients from './client';
+import clientExpressions from './client';
+import studyExpressions from './study';
 
 const viewers = new ViewerRegistry<ExpressionViewProps>();
 
-viewers.add(clients);
-
+viewers.add(clientExpressions);
+viewers.add(studyExpressions);
 export const getExpressionViewer = (name: string) => {
     const def = viewers.get(name);
     if(!def) {
