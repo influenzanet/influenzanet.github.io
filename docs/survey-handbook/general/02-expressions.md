@@ -9,18 +9,18 @@ Expression is a [general concept](./concepts) used in several places of the Infl
 Expressions provide dynamic property evaluation for the survey logic and logic in study rules.
 
 They are represented as a hierarchical data structure (an expression can contain and use the results of nested expressions as arguments) 
-in 2 forms in the survey System : Expression and ExpressionArg.
+in two forms in the survey System : `Expression` and `ExpressionArg`.
 
 ## Expression
 
-**Expression** is represents an operation (possibly nested) to be evaluated later by the system (in the Survey or Study engine) to produce a value (often boolean but not always) or a side effect (an action like sending a message or assigning a survey).
+**Expression** represents an operation to be evaluated later by the [Survey Engine](../survey-engine/) or [Study Service](../study-service/)) to produce a value (often boolean but not always) or a side effect (an action like sending a message or assigning a survey).
 
-An **Expression** is a simple data structure containing a `name` field with the name of the function to call and a `data` field containing the list of parameters of the call using an `ExpressionArg` (each entry of the list must be an ExpressionArg).
+An **Expression** is a simple data structure containing a `name` field with the name of the function to call and a `data` field containing the list of parameters of the call using an `ExpressionArg` (each entry of the arguments list must be an ExpressionArg).
 
 ## ExpressionArg
 
-An **ExpressionArg** is a data structure used to represent an argument value of an Expression (each entry of the `data` field of an expression is an *ExpressionArg*). It can contain a expression or a literal value.
-*ExpressionArg* are used when the expected value can be a fixed value (string or numeric) or an *Expression*.
+An **ExpressionArg** is a data structure used to define an argument value of an Expression (each entry of the `data` field of an expression is an *ExpressionArg*). It can contain a expression or a literal value.
+*ExpressionArg* are used when the expected value can be a fixed value (string or numeric) or an *Expression* like in [Survey Item Components properties](../survey-engine/components/overview).
 
 ExpressionArg definition is (typescript notation is used, '?' after the name means it's an optional value)
 ```ts
@@ -33,7 +33,7 @@ ExpressionArg definition is (typescript notation is used, '?' after the name mea
 
 ````
 
-The `dtype` field indicate what kind of value the ExpressionArg contains, if `dtype` is missing then the ExpressionArg must have a string value in `str` field.
+The `dtype` field indicates what kind of value the ExpressionArg contains, if `dtype` is missing then the ExpressionArg must have a string value in `str` field.
 
 Examples:
 
