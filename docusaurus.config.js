@@ -20,6 +20,7 @@ const config = {
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'influenzanet', // Usually your GitHub org/user name.
   projectName: 'influenzanet.github.io', // Usually your repo name.
+  deploymentBranch: 'master',
   trailingSlash: false,
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
