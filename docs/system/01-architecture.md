@@ -39,9 +39,10 @@ flowchart TB
 
     
     %% Svc to svc
-    userService <-- gRPC --> messagingService
-    studyService <-- gRPC -->messagingService
-
+    userService -- gRPC --> messagingService
+    studyService <-- gRPC --> messagingService
+    userService -- gRPC --> loggingService
+     
     %% Svc to db 
     userService <-.-> userDB
     studyService <-.-> studyDB
