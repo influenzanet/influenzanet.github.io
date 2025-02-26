@@ -1,0 +1,182 @@
+openapi: 3.1.1
+info:
+  version: v1
+  title: Management APIs
+  description: Management APIs endpoints
+paths:
+  /v1/auth/login-with-email:
+    post:
+      summary: /v1/auth/login-with-email
+      description: |
+        This endpoint is used to get Bearer Authentication and Refresh token in order to perform authenticated requests to the platform
+      tags:
+        - Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                instanceId:
+                  type: string
+                  description: The ID of the instance to authenticate against
+                email:
+                  type: string
+                  format: email
+                  description: Account email
+                password:
+                  type: string
+                  format: password
+                  description: Account password
+                verificationCode:
+                  type: string
+                  description: Verification code (optional)
+      responses:
+        '200':
+          description: |
+
+            If two-factor authentication (2FA) is enabled for the user and the  `verificationCode` field is missing or empty, an email with a verification code will be sent, and the `secondFactorNeeded` flag in the response will be set to `true`. The user must then call this endpoint again with the same request body, including the received verification code in the `verificationCode` field, to complete the login and receive tokens.
+
+            If 2FA is disabled or a service account is being used, the `verificationCode` field is not required.
+
+            **Possible response payloads**
+
+            * **`LoginWith2FA`:** Returned when 2FA is required and no verification code is provided. Includes a subset of user information and `secondFactorNeeded` flag set to true. See [`LoginWith2FA`](#components-schemas-loginwith2fa) for details.
+            * **`LoginSuccess`:** Returned after successful 2FA or when 2FA is not required. Includes the full user information and token details. See [`LoginSuccess`](#components-schemas-loginsuccess) for details.
+
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/LoginWith2FA'
+                  - $ref: '#/components/schemas/LoginSuccess'
+        '400':
+          description: Bad request (invalid email, password, or verification code)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: The error message explaining the reason for the bad request
+                    example: "invalid username and/or password"
+        '500':
+          description: Internal server error
+components:
+  schemas:
+    Profile:
+      type: object
+      properties:
+        id:
+          type: string
+        alias:
+          type: string
+        avatarId:
+          type: string
+        mainProfile:
+          type: boolean
+
+    ContactInfo:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        email:
+          type: string
+        confirmedAt:
+          type: integer
+        confirmationLinkSentAt:
+          type: integer
+
+    ContactPreferences:
+      type: object
+      properties:
+        sendNewsletterTo:
+          type: array
+          items:
+            type: string
+        subscribedToNewsletter:
+          type: boolean
+        subscribedToWeekly:
+          type: boolean
+        receiveWeeklyMessageDayOfWeek:
+          type: integer
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+        account:
+          type: object
+          properties:
+            accountId:
+              type: string
+            accountConfirmedAt:
+              type: integer
+            authType:
+              type: string
+            preferredLanguage:
+              type: string
+            secondFactorNeeded:  # Add the SecondFactorNeeded flag here
+              type: boolean
+              description: Indicates if 2FA is required
+              example: true
+        roles:
+          type: array
+          items:
+            type: string
+        profiles:
+          type: array
+          items:
+            $ref: '#/components/schemas/Profile'
+        contactInfos:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContactInfo'
+        contactPreferences:
+          $ref: '#/components/schemas/ContactPreferences'
+
+    LoginWith2FA:
+      type: object
+      properties:
+        user:
+          type: object
+          properties:  # Only include the subset of properties sent in this case
+            account:
+              type: object
+              properties:
+                accountId:
+                  type: string
+                accountConfirmedAt:
+                  type: integer
+        secondFactorNeeded:
+          type: boolean
+          description: Indicates if 2FA is required
+          example: true
+
+    LoginSuccess:
+      type: object
+      properties:
+        token:
+          type: object
+          properties:
+            accessToken:
+              type: string
+            refreshToken:
+              type: string
+            expiresIn:
+              type: integer
+            profiles:
+              type: array
+              items:
+                $ref: '#/components/schemas/Profile'
+            selectedProfileId:
+              type: string
+            preferredLanguage:
+              type: string
+        user:
+          $ref: '#/components/schemas/User'

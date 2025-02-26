@@ -29,9 +29,9 @@ const config = {
       mermaid: true,
   },
 
-  plugins: ['docusaurus-plugin-sass', './plugins/snippets'],
+  plugins: ['docusaurus-plugin-sass', './plugins/snippets', './plugins/polyfill-plugin'],
 
-  themes: ['@docusaurus/theme-mermaid'],
+  themes: ['@docusaurus/theme-mermaid', 'redocusaurus'],
 
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
@@ -68,6 +68,19 @@ const config = {
         },
       }),
     ],
+    [
+      'redocusaurus',
+      {
+        debug: true,
+        specs: [
+          {
+            id: 'management-api',
+            spec: 'static/openapi/management-api/openapi.yaml',
+            url: '/api'
+          },
+        ]
+      },
+    ]
   ],
 
   themeConfig:
