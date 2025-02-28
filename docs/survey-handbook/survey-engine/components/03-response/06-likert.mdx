@@ -1,0 +1,106 @@
+---
+sidebar_label: Likert question
+---
+import  { SurveyComponent } from "@site/src/components/survey";
+
+# Likert Question
+
+Likert question allows to assess a list of items on a scale of qualitative responses (usually ordered)
+
+For example with scale "Strongly agree", "Agree", "Neutral", "Disagree", "Strongly disagree"
+
+<SurveyComponent name="LikertInput"/>
+
+A Likert component allows to assets for several rows for the same scale
+
+<SurveyComponent name="LikertInputSeveral"/>
+
+## Scale
+
+Scale is defined by a list of `Scale Option`
+
+Each scale option has the several properties (case-editor-tools)
+
+- `key` :  The key of the option, used as value in the data when this option is selected
+- `content`: Scale option label [Translatable](../../04-i18n) 
+- `className` (optional) : CSS class Name to attribute to the option element container 
+
+## Rows 
+
+Each row is defined as a list of Row items
+
+- `key`: key of the row used to refer the row in the output data;
+- `displayCondition`: optional Expression to trigger the display of the element
+- `content`: label [Translatable](../../04-i18n) 
+
+Optional properties:
+
+To control the row option when a specific display mode is used
+
+- `horizontalModeProps`
+- `verticalModeProps`
+- `tableModeProps` 
+
+
+## Display mode
+
+The display mode determine how the component is shown, among
+
+- 'horizontal'
+- 'vertical'
+- 'table'
+
+### Vertical mode
+
+<SurveyComponent name="LikertInputVertical"/>
+
+### Table mode
+
+<SurveyComponent name="LikertInputTable"/>    
+
+Configuration, each display mode accept some configuration 
+
+
+The options (case-editor-tools), as ResponsiveSingleChoiceArray properties
+
+```json
+
+// For table
+tableModeProps?: {
+    className?: string; // 
+    layout?: "fixed"; // Use fixed layout if set to 'fixed'
+    firstColWidth?: string; // Column size of the first column (row label)
+    optionHeaderClassName?: string; // Class name to attribute to the table header line for scale option
+    hideRowBorder?: boolean; // Dont show row border
+}
+
+// For horizontal mode
+horizontalModeProps?: {
+    hideRowBorder?: boolean; // If true, hide border between rows
+}
+
+// Vertical mode 
+verticalModeProps?: {
+    hideRowBorder?: boolean;
+    useReverseOptionOrder?: boolean; // Show scale options in the reverse order as provided
+}
+
+```
+
+## Responsive Mode
+
+Responsive mode enable to select the display mode given the size of the display screen.
+Display screen categories:
+
+https://getbootstrap.com/docs/5.0/layout/breakpoints/
+
+Values are indicated for default bootstrap configuration
+
+- `sm` (>= 576px and <768)
+- `md` (< 992px )
+- `lg` (< 1200px)
+- `xl` (< 1400px)
+- `xxl`( >= 1400px )
+
+For each element it's possible to declare a diplay mode ('horizontal', 'vertical', 'table')
+

@@ -11,6 +11,7 @@ import text from "./text";
 import textInput from "./textInput";
 import matrix from "./matrix";
 import cloze from "./cloze";
+import likert from "./likert";
 
 const registry = new ViewerRegistry<ItemViewProps>();
 
@@ -31,3 +32,4 @@ registry.add(text);
 registry.add(textInput);
 registry.add(matrix);
 registry.add(cloze);
+registry.add(likert);
