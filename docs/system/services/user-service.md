@@ -4,20 +4,18 @@ sidebar_label: User Management Service
 
 # User Management Service
 
-User management service is responsible to manage User accounts and authentication.
+The User management service is responsible for managing user accounts and authentication. 
 
-User Account contains information about a user 
+User account contains information about a user (individual registered to the platform):
 
-Non exhaustive list of 
-- AccountID : Uniquely idenfity the account, and is used as login. Usually email address
-- List of Profiles, each profiles define participants with avatar and nickname and 
+- AccountID : Uniquely identifies the account, and is used for login. Usually email address
+- A list of profiles associated with the account.
 
+Profiles define participants associated with the account. In the user service only potentially identifying fields are registered such as a nickname (could be a real name) and an avatar (an image name chosen by then participant which could indirectly give little information about the participant).
 
-Profiles define participants associated with the account. In the User Service only potentially identifying fields are registered like a nickname (could be a real name) and an avatar (image name selected by participant that could indirectly give little information about the participant).
+Profiles are not directly linked to the response data, but profile ID are mapped to a ParticipantID using a mapping operator in the [Study Service](/docs/survey-handbook/study-service/).
 
-Profiles are not directly connected to the response data, but Profile Id are mapped to a ParticipantID using a Mapping operator in the [Study Service](/docs/survey-handbook/study-service/).
-
-## User Account Data structure
+## User Account Data Structure
 
 ```ts
 interface User {
@@ -33,7 +31,7 @@ interface User {
     timesptamps: {
 
     },
-    profiles: Profile[], // List of participant associated with the account
+    profiles: Profile[], // List of participants associated with the account
     contactPreferences: {
         	subscribedToNewsletter: bool,
             SendNewsletterTo: string[],
@@ -67,27 +65,27 @@ interface ContactInfo {
 
 Features provided by the User Service
 
-- Create and update User account
-- Validate account creation by confirmation email
-- Validate User contact info by sending confirmation email
-- Manage Authentication Tokens
-- Manage Password Reset endpoint
-- Manage Temporary tokens
+- Create and update then user account
+- Validate account creation by sending confirmation email
+- Validate user contact info by sending confirmation email
+- Manage authentication tokens
+- Manage password reset endpoint
+- Manage temporary tokens
 
-Inside the service some time based operation can be 
+Within the service some time-based operations can be performed 
 
-- Cleanup unverified users after a delay
-- Send Reminder to confirm account creation
+- Purging unverified users after a delay
+- Send reminders to confirm account creation
 
 ## Golang Implementation
 
-The golang implementation of https://github.com/influenzanet/user-management-service
+The golang implementation from https://github.com/influenzanet/user-management-service
 
 ## Service configuration
 
-User management service is configured using Environment variables.
+The user management service is configured using environment variables.
 
-Environment list is defined in https://github.com/influenzanet/user-management-service/blob/master/build/docker/example/user-management-env.list
+environment list is defined in https://github.com/influenzanet/user-management-service/blob/master/build/docker/example/user-management-env.list
 
 ### Database connexions
 
@@ -108,71 +106,70 @@ DB_MAX_POOL_SIZE=8
 DB_DB_NAME_PREFIX=
 ```
 
-Databases organization is described in [Architecture](../architecture)
+The Databases organization is described in [Architecture](../architecture)
 
-`DB_DB_NAME_PREFIX` used as the Database Prefix name, all databases manages by the service will use this value as a prefix.
+`DB_DB_NAME_PREFIX` is used as the database prefix name, all databases managed by the service will use this value as a prefix.
 
-`USER_DB_*` is needed to connect to the User Databases for all the managed instances. It should be credentials of an account with read/write rights on all databases of the managed instances.
+`USER_DB_*` variables are required to connect to the user databases for all the managed instances. They define the credentials of an account of the MongoDB database server with read/write rights on all databases of the managed instances.
 
-`GLOBAL_DB_*` is needed to connect to the Global Databases for this prefix. (containing the `instances` collection)
+`GLOBAL_DB_*` variables are required to connect to the Global Database for this prefix. (containing the `instances` collection)
 
-`*_CONNECTION_PREFIX` is used for the connexion schema, if you use domain based load balancer you can use '+srv' prefix, or leave empty.
-
+`*_CONNECTION_PREFIX` are used for the connexion schema, if you use domain based load balancer you can use '+srv' prefix, or leave empty.
 
 ### Authentication settings
 
 - `TOKEN_EXPIRATION_MIN` : Token expiration delay (in minutes)
-- `JWT_TOKEN_KEY`: Random generated base64 encoded key, should be secret
-- `ARGON2_MEMORY`: Memory to use for Argon2 password Hashing
-- `ARGON2_ITERATIONS`: Number of Iterations to used
-- `ARGON2_PARALLELISM`: Number of thread to use to compute Argon2 password hashing
+- `JWT_TOKEN_KEY`: Randomly generated base64 encoded key, should be secret
+- `ARGON2_MEMORY`: Memory to use for Argon2 password hashing
+- `ARGON2_ITERATIONS`: Number of iterations to used
+- `ARGON2_PARALLELISM`: Number of threads to use to compute Argon2 password hashing
 
 For details about Argon2, the golang package can give some help https://pkg.go.dev/golang.org/x/crypto/argon2 
 
 ### Service Connection
 
-- `USER_MANAGEMENT_LISTEN_PORT`: Value of the port the service will listen 
+- `USER_MANAGEMENT_LISTEN_PORT`: value of the port the service will listen 
 
-The User Service need to connect to other services, host:port address must be specified as
+The User Service needs to connect to other services, host:port address must be specified as
 
-- `ADDR_MESSAGING_SERVICE` : Messaging Service Address
-- `ADDR_LOGGING_SERVICE`: Logging Service Address
+- `ADDR_MESSAGING_SERVICE` : Messaging Service address
+- `ADDR_LOGGING_SERVICE`: Logging Service address
 
 ### Parameters for User services behaviors
 
-Duration and Lifetimes
-|          Variable                     |  Description                                           | Unit                        |
-|-------------------------------------  |--------------------------------------------------------|-----------------------------|
-| `CLEAN_UP_UNVERIFIED_USERS_AFTER`     | Number of seconds period to cleanup unverified account | seconds                     |
-| `VERIFICATION_CODE_LIFETIME`          | Lifetime of the verification code for a new account    | seconds                     |
-| `INVITATION_TOKEN_LIFETIME`           | Token lifetime for Invitation message                  | *Duration (default: minutes) |
-| `CONTACT_VERIFICATION_TOKEN_LIFETIME` | Token lifetime for Contact verification (email)        | *Duration (default: minutes) |
+Duration and Lifetime
 
-(*) Duration handles unit (golang time.Duration 'h' for hours, 'm' for minutes, 's' for seconds), if unit is not indicated in the value the unit between parenthesis will be used.
+|          Variable                     |  Description                                            | Unit                        |
+|-------------------------------------  |---------------------------------------------------------|-----------------------------|
+| `CLEAN_UP_UNVERIFIED_USERS_AFTER`     | Number of seconds period to clean up unverified account | seconds                     |
+| `VERIFICATION_CODE_LIFETIME`          | Lifetime of the verification code for a new account     | seconds                     |
+| `INVITATION_TOKEN_LIFETIME`           | Token lifetime for Invitation message                   | *Duration (default: minutes)|
+| `CONTACT_VERIFICATION_TOKEN_LIFETIME` | Token lifetime for Contact verification (email)         | *Duration (default: minutes)|
+
+(*) Duration handles unit (golang time.Duration 'h' for hours, 'm' for minutes, 's' for seconds), if unit is not specified in the value the unit between brackets will be used.
 
 
-- `NEW_USER_RATE_LIMIT`: Maximum number of new created accounts, during the signupRateLimitWindow (5 minutes)
+- `NEW_USER_RATE_LIMIT`: Maximum number of new created account, during the signupRateLimitWindow (5 minutes)
 
-#### WeekDay assignation
+#### WeekDay allocation
 
 - `WEEKDAY_ASSIGNATION_WEIGHTS` : Weight of days
 
-Each account is assigned to a random day of the week to receive the Weekly reminder/newsletter. To control distribution of accounts on week days, it's possible
-to give a weight to each day. The weight will be used to determine the probability to assign a user to a given day.
+Each account is assigned to a random day of the week to receive the Weekly reminder/newsletter. To control the distribution of accounts on week days, it's possible to assign a weight to each day. The weight will be used to determine the probability of assigning a user to a given day.
 The probability to assign a day is given by P(day) = W(day) / Sum(W(0)..W(7))
-It's up to you to define weights, you can use any positive integer. If Weight of a day is set to 0, then the day will be excluded and no account will be assigned to this day.
+It's up to you to define the weights, you can use any positive integer. If Weight of a day is set to 0, the day is excluded and no account is assigned to it.
 Each day is named by its 3 letter abbreviation (case insensitive) : Mon, Tue, Wed, Thu, Fri, Sat, Sun
 
 Examples:
 
 ```bash
-# Uniform assignation (each day has the same probability to be picked up), it's the default strategy if no value is given for this variable
+# Uniform assignment (each day has the same probability to be picked up), it's the default strategy if no value is given for this variable
 WEEKDAY_ASSIGNATION_WEIGHTS=Mon=1,Tue=1,Wed=1,Thu=1,Fri=1,Sat=1,Sun=1
 
-# Only Monday - Webnesday
+# Only Monday - Wednesday
 WEEKDAY_ASSIGNATION_WEIGHTS=Mon=1,Tue=1,Wed=1,Thu=0,Fri=0,Sat=0,Sun=0
 
-# Only Monday - Thursday, but Tuesday, Wednesday twice a chance to be choosen
+# Only Monday - Thursday, but Tuesday, Wednesday two chance to be selected
 WEEKDAY_ASSIGNATION_WEIGHTS=Mon=1,Tue=2,Wed=2,Thu=1,Fri=0,Sat=0,Sun=0
 
 ``````
