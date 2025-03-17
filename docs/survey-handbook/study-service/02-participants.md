@@ -4,27 +4,37 @@ sidebar_label: Participants
 
 # Study Participants
 
-A Study `Participant` represents an individual (human or not) subject of the survey responses (each response is associated with a `Participant`).
+A Study `Participant` represents an individual (human or otherwise) subject of the survey responses (each response is associated with a `Participant`).
 
-A Participant is associated with a persistant **state** containing the participant's data:
+A `Participant` is associated with a persistent **state** containing the participant's data:
 
-- `participantID`: Uniquely identifies a participant (created using a [Mapping Operator](#participants-mapping-mapping))
-- `assignedSurveys`: List of survey the participant can respond to. Each assignation can have a *category* and a validity date range (from, until)
-- `status` : Status of the participants in the study (can be `active`, `temporary`,`exited`,`accountDeleted`)
-- `enteredDate`: when the participant joined the study
-- `flags` : A list of key-values
-- `currentStudySession`: The current session the participant is involved into
+- `participantID`: Uniquely identifies a participant (created using a [mapping operator](#participants-mapping-mapping))
+- `assignedSurveys`: List of surveys that the participant can respond to. Each assignment can have a *category* and a validity date range (from, until)
+- `status` : status of the participants in the study (can be `active`, `temporary`,`exited`,`accountDeleted`)
+- `enteredDate`: when the participant entered the study
+- `flags` : A list of key values (described below)
+- `currentStudySession`: The current session in which the participant is involved
+
+Assignment categories known by the legacy javascript client:
+
+- 'immediate': if such a survey is assigned, and is "active" (in time window), it would be opened automatically after finishing a previous survey, and so these can be used to chain surveys
+- 'prio': shown in the main surveys list with primary color of the web site
+- 'normal': shown in the main surveys list with a less prominent color
+- 'optional': is hidden behind the collapsible component (optional survey list below the main list)
+
+These categories are only handled on the client side and has no meaning for the backend side. It's possible that another client implementation could
+handle different categories in the future.
 
 ## Participant Status {#status}
 
 - "active" : The participant is active in the study ()
 - "temporary" : for participants without a registered account
-- "exited" : participant leaved the study
-- "accountDeleted" : the corresponding account has been deleted (not possible anymore to identify the account)
+- "exited" : participant has left the study
+- "accountDeleted" : the corresponding account has been deleted (it's no longer possible to identify the account)
 
 ## Participants flags {#flags}
 
-Participants flag allows to define a flag (with a name) and a value (a string) as a dynamic property.
+Participants flag allows you to define a flag (with a name) and a value (a string) as a dynamic property.
 Flags are available in Survey Context during the filling of the response (the flags can be used in survey logic), and in the study rules.
 
 The technical platform does not define any flag, it's up to the team managing the platform to define the flags needed to provide the study and survey logic they want.
